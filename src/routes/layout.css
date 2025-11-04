@@ -1,0 +1,220 @@
+:root {
+  --primary-color           : #FFD700;
+  --secondary-color         : #388E3C;
+  --accent-color            : #144700;
+  --light-accent-color      : #237803;
+  /* --accent-color            : #5d4037;
+  --light-accent-color      : #795d42; */
+  --dark-bg                 : #121212;
+  --light-bg                : #FFFBEF;
+  --dark-text               : #121212;
+  --light-text              : #FFFBEF;
+}
+
+/* Reset and Base Styles */
+* {
+  box-sizing                : border-box;
+  margin                    : 0;
+  padding                   : 0;
+}
+
+html {
+  height                      : 100%;
+}
+
+body {
+  background-color          : var(--light-bg);
+  color                     : var(--dark-text);
+  font-family               : 'Open Sans', sans-serif;
+  font-size                 : 16px;
+  height                    : 100%;
+  line-height               : 1.6;
+}
+
+a, a:visited, a:hover {
+  color                     : var(--dark-text);
+}
+
+h1 {
+  font-family               : 'Bebas Neue', sans-serif;
+}
+
+/* Container */
+.container {
+  margin                    : 0;
+  max-width                 : 64rem;
+  padding                   : 0 1.25rem;
+  width                     : 100%;
+}
+
+/* Navigation */
+.navbar {
+  background-color          : var(--light-bg);
+  padding                   : 1rem 0;
+  position                  : absolute;
+  top                       : 0;
+  width                     : 100%;
+  z-index                   : 10;
+}
+
+.navbar > .container {
+  align-items               : center;
+  display                   : grid;
+  grid-template-columns     : 3.5rem 1fr 3.5rem;
+  grid-template-areas       : "logo schedule menu";
+}
+
+.navbar > .container.open {
+  grid-template-areas       :
+    "logo . menu"
+    ". links ."
+    ". schedule .";
+}
+
+.logo {
+  background-image          : url('img/oxossi-malta-logo.png');
+  background-size           : cover;
+  cursor                    : pointer;
+  grid-area                 : logo;
+  height                    : 3.5rem;
+  position                  : relative;
+  width                     : 3.5rem;
+}
+
+.secondary {
+  background-color          : var(--secondary-color);
+  /* border                    : solid .125rem var(--dark-text); */
+  border-radius             : .75rem;
+  display                   : block;
+  font-family               : 'Bebas Neue', sans-serif;
+  font-size                 : 2rem;
+  grid-area                 : schedule;
+  justify-self              : center;
+  padding                   : .125rem 1rem 0;
+  text-decoration           : none;
+}
+
+a.secondary, a.secondary:visited {
+  color                     : var(--light-text);
+}
+
+/* 
+.schedule {
+  border                    : solid .125rem var(--dark-text);
+  border-radius             : .75rem;
+  font-family               : 'Bebas Neue', sans-serif;
+  font-size                 : 2rem;
+  grid-area                 : schedule;
+  justify-self              : center;
+  padding                   : .125rem 1rem 0;
+  text-decoration           : none;
+} */
+
+.nav-links {
+  align-items               : center;
+  display                   : none;
+  font-size                 : 1.5rem;
+  gap                       : 1.25rem;
+  grid-area                 : links;
+  justify-self              : center;
+  list-style                : none;
+  padding                   : 0 0 2rem;
+}
+
+.navbar > .container.open > .nav-links {
+  display                   : flex;
+  flex-direction            : column;
+  gap                       : 1.75rem;
+  padding-bottom            : 1.25rem;
+}
+
+.nav-links a {
+  display                   : inline-block;
+  font-weight               : 600;
+  text-decoration           : none;
+  text-align                : center;
+}
+
+.hamburger {
+  background                : none;
+  border                    : none;
+  cursor                    : pointer;
+  display                   : block;
+  font-size                 : 2.5rem;
+  grid-area                 : menu;
+}
+
+/* Main Content */
+.main {
+  margin                    : 3.75rem 0 0;
+  min-height                : 80%;
+  padding                   : 2.25rem 0;
+}
+
+/* Footer */
+.footer {
+  background-color          : var(--accent-color);
+  color                     : var(--light-text);
+  padding                   : 1.875rem 0;
+  text-align                : center;
+}
+
+.social-links {
+  display                   : flex;
+  gap                       : 3rem;
+  justify-content           : center;
+  margin-bottom             : 1.125rem;
+}
+
+.social-links > a {
+  color                     : white;
+  display                   : block;
+  text-decoration           : none;
+}
+
+.social-links > a > img {
+  height                    : 3rem;
+  object-fit                : cover;
+  width                     : 3rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin                    : 0 auto;
+  }
+
+  .navbar .container,
+  .navbar > .container.open {
+    grid-template-columns     : 8rem 1fr 8rem;
+    grid-template-areas       : "logo links schedule";
+  }
+
+  .logo::after {
+    content                   : 'Capoeira Malta';
+    display                   : block;
+    font-family               : 'Bebas Neue', sans-serif;
+    font-size                 : 1rem;
+    font-weight               : bold;
+    line-height               : 1.25em;
+    left                      : 3.75rem;
+    height                    : 2.4rem;
+    position                  : absolute;
+    width                     : 3rem;
+    top                       : .6rem;
+  }
+
+  .nav-links {
+    display                   : flex;
+    font-size                 : 1rem;
+    padding                   : 0 2rem 0 0;
+  }
+
+  .navbar > .container.open > .nav-links {
+    flex-direction            : row;
+    padding                   : 0 2rem 0 0;
+  }
+
+  .navbar > .container > .hamburger {
+    display                   : none;
+  }
+}

@@ -15,6 +15,10 @@
 		"test": "npm run test:unit -- --run && npm run test:e2e",
 		"test:e2e": "playwright test"
 	},
+	"dependencies": {
+		"@humanspeak/svelte-markdown": "^0.8.13",
+		"@squidex/squidex": "^2.0.1"
+	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
 		"@eslint/js": "^9.36.0",

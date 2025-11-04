@@ -1,1 +1,1 @@
-// place files you want to import through the `$lib` alias in this folder.
+export { Squidex } from './server/squidex-client/index.js'
