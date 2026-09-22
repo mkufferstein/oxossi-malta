@@ -1,0 +1,190 @@
+.hero {
+  height                    : 30rem;
+  overflow                  : hidden;
+  position                  : relative;
+  text-align                : left;
+}
+
+.hero h1 {
+  font-size                 : 2rem;
+  margin                    : 0;
+  min-width                 : 15rem;
+  padding                   : 3rem 2rem 0;
+  text-align                : left;
+  width                     : 40%;
+}
+
+.introduction {
+  padding                   : 4rem 1rem;
+}
+
+.introduction h1 {
+  font-size                 : 2rem;
+  margin                    : 0;
+  padding                   : 0 2rem;
+  text-align                : center;
+}
+
+.introduction h2 {
+  font-size                 : 1.5rem;
+  margin                    : 0;
+  padding                   : 3rem 2rem 0;
+  text-align                : center;
+}
+
+
+
+.hero > img {
+  height                    : 30rem;
+  left                      : 0;
+  object-fit                : cover;
+  position                  : absolute;
+  width                     : 100%;
+  z-index                   : -1;
+}
+
+.hero > section {
+  padding                   : 1.875rem 0;
+}
+
+.hero > section > h2 {
+  font-family               : 'Open Sans', sans-serif;
+  font-size                 : 1.25rem;
+  margin                    : 0;
+  padding                   : 3rem 2rem 0;
+}
+
+.highlights {
+  background-color          : var(--accent-color);
+  padding                   : 1.5rem 0 0;
+}
+
+.highlights > .container {
+  display                   : grid;
+  gap                       : 0;
+  grid-template-columns     : 1fr;
+
+}
+
+.highlights > .container > img {
+  border-radius             : .75rem .75rem 0 0;
+  object-fit                : cover;
+  width                     : 100%;
+}
+
+.highlight {
+  background-color          : var(--light-accent-color);
+  border-radius             : 0 0 .75rem .75rem;
+  color                     : var(--light-text);
+  margin                    : 0 0 1rem;
+  overflow                  : hidden;
+  padding                   : 1.5rem .5rem;
+  text-align                : center;
+}
+
+.highlight h1 {
+  font-size                 : 1.75rem;
+  padding                   : .75rem 0;
+}
+
+.highlight h2 {
+  font-size                 : 1rem;
+  padding                   : .5rem 0;
+}
+
+.highlight a {
+  background-color          : var(--primary-color);
+  border-radius             : .5rem;
+  color                     : var(--dark-text);
+  display                   : inline-block;
+  font-family               : 'Bebas Neue', sans-serif;
+  font-size                 : 1.5rem;
+  margin                    : 1rem 0 0;
+  padding                   : .5rem 1.25rem;
+  text-decoration           : none;
+}
+
+.mestre {
+  padding                   : 2rem;
+  text-align                : center;
+}
+
+.mestre > img {
+  border-radius             : .75rem;
+  width                     : 90%;
+}
+
+.ani {
+  background-color          : var(--primary-color);
+}
+
+.ani > section {
+  padding                   : 2rem;
+  text-align                : center;
+}
+
+.ani > section > h1 {
+  font-size                 : 3rem;
+}
+
+.ani > section > h2 {
+  font-size                 : 1.75rem;
+  padding                   : 1rem 0;
+}
+
+.ani > section > p {
+  font-size                 : 1.25rem;
+  padding                   : 1rem 0 3rem;
+}
+
+@media (min-width: 768px) {
+  .hero h1 {
+    font-size                 : 3rem;
+    min-width                 : 20rem;
+    padding                   : 6rem 2rem 0;
+  }
+
+  .introduction {
+    padding                   : 4rem;
+  }
+
+  section h2 {
+    font-size                 : 1.5rem;
+  }
+
+  .highlights {
+    flex-direction            : row;
+    padding                   : 2rem 0 3rem;
+  }
+
+  .highlights > .container {
+    gap                       : 1rem;  
+    grid-template-columns     : 1fr 1fr;
+  }
+
+  .highlights > .container > img {
+    border-radius             : .75rem;
+    object-fit                : cover;
+    width                     : 100%;
+  }
+
+  .highlight {
+    border-radius             : .75rem;
+    margin                    : 0;
+  }
+
+  .highlight > h2 {
+    min-height                : 7.5rem;
+  }
+
+  .highlight:nth-child(4) {
+    grid-column-start: 1;
+    grid-row-start: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .highlights > .container {
+    grid-template-columns     : 1fr 1fr 1fr;
+  }
+}
