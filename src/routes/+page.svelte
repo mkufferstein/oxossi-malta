@@ -12,6 +12,16 @@ console.log(heroBanner, highlights)
 
 </script>
 
+<svelte:head>
+	<meta property="og:title" content="Axe Da Ilha Capoeira Malta" />
+	<meta property="og:description" content="Afro-Brazilian martial-art, with traditional music, energy, body communication, acrobatics, dance, combat, community, harmony, elegance, balance... Capoeira Is all of this and more! Welcome to the family." />
+	<!-- <meta property="og:image" content="https://www.capoeiramalta.com/uploads/1/5/3/9/153980973/published/adi-m.png?1784477132" /> -->
+	<meta property="og:url" content="https://www.capoeiramalta.com/" />
+
+	<meta name="description" content="Afro-Brazilian martial-art, with traditional music, energy, body communication, acrobatics, dance, combat, community, harmony, elegance, balance... Capoeira Is all of this and more! Welcome to the family." />
+	<meta name="keywords" content="Capoeira, Brazil, Brazilian, Martial, art, combat, culture, training, lessons" />
+</svelte:head>
+
 <div class="hero">
 	<img src={"https://cloud.squidex.io/api/assets/oxossi-malta/" + heroBanner.banner.iv} alt="Oxossi Capoeira Malta"/>
 	<section class="container">

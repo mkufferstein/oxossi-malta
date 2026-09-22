@@ -21,7 +21,7 @@
 	<link rel="icon" href={favicon} />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Capoeira Website</title>
+	<title>Axe da Ilha</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -34,8 +34,8 @@
 				<a href="/" class="logo"></a>
 				<ul class="nav-links">
 						<li><a href="/capoeira-classes-malta">Capoeira Classes</a></li>
-						<li><a href="/gentle-power">55+ Classes</a></li>
-						<li><a href="/axe-na-ilha">Capoeira Festival</a></li>
+						<li><a href="/workshop">Workshops</a></li>
+						<li><a href="/axe-da-ilha-2026">1˚ Axe da Ilha Festival</a></li>
 						<li><a href="/about-oxossi-capoeira-malta">About Us</a></li>
 						<li><a href="/contact">Contact</a></li>
 				</ul>

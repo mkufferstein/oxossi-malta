@@ -72,7 +72,7 @@ h1 {
 }
 
 .logo {
-  background-image          : url('img/oxossi-malta-logo.png');
+  background-image          : url('img/adi.png');
   background-size           : cover;
   cursor                    : pointer;
   grid-area                 : logo;
