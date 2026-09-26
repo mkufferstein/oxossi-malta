@@ -1,21 +1,23 @@
 <script lang="ts">
   import SvelteMarkdown from '@humanspeak/svelte-markdown'
-  import type { PageProps } from './$types';
+  import type { PageProps } from './$types'
   import './page.css'
+
+  const squidexDomain = "https://cloud.squidex.io/api/assets/oxossi-malta/"
 
   let { data }: PageProps = $props();
 
   let heroBanner = data.post.items[0].data,
     highlights = data.highlights.items
-
-console.log(heroBanner, highlights)
-
 </script>
 
 <svelte:head>
   <meta property="og:title" content="Axe Da Ilha Capoeira Malta" />
   <meta property="og:description" content="Afro-Brazilian martial-art, with traditional music, energy, body communication, acrobatics, dance, combat, community, harmony, elegance, balance... Capoeira Is all of this and more! Welcome to the family." />
-  <!-- <meta property="og:image" content="https://www.capoeiramalta.com/uploads/1/5/3/9/153980973/published/adi-m.png?1784477132" /> -->
+  <meta property="og:image" content={squidexDomain + heroBanner.banner.iv} />
+  {#each highlights as highlight}
+    <meta property="og:image" content={squidexDomain + highlight.data.banner.iv} />
+  {/each}
   <meta property="og:url" content="https://www.capoeiramalta.com/" />
 
   <meta name="description" content="Afro-Brazilian martial-art, with traditional music, energy, body communication, acrobatics, dance, combat, community, harmony, elegance, balance... Capoeira Is all of this and more! Welcome to the family." />
@@ -23,10 +25,11 @@ console.log(heroBanner, highlights)
 </svelte:head>
 
 <div class="hero">
-  <img src={"https://cloud.squidex.io/api/assets/oxossi-malta/" + heroBanner.banner.iv} alt="Oxossi Capoeira Malta"/>
+  <img src={squidexDomain + heroBanner.banner.iv} alt="Oxossi Capoeira Malta"/>
   <section class="container">
     <h1>{heroBanner.title.en}</h1>
     <h2>{heroBanner.description.en}</h2>
+    <a href="{heroBanner.ctaLink.en}" class="secondary">{heroBanner.ctaText.en}</a>
   </section>
 </div>
 <section class="container introduction">
@@ -35,7 +38,7 @@ console.log(heroBanner, highlights)
 <div class="highlights">
   <section class="container">
     {#each highlights as highlight}
-      <img src={"https://cloud.squidex.io/api/assets/oxossi-malta/" + highlight.data.banner.iv } alt={highlight.data.title.en} />
+      <img src={squidexDomain + highlight.data.banner.iv } alt={highlight.data.title.en} />
       <div class="highlight">
         <h1>
           {highlight.data.title.en}
@@ -49,8 +52,23 @@ console.log(heroBanner, highlights)
   </section>
 </div>
 <div class="container mestre">
-  <img src="/img/mestre-tarzan_orig.jpg" alt="Oxossi Mestre Tarzan"/>
-  <h1>Mestre Tarzan</h1>
+  <img src="/img/manu-portu_orig.jpg" alt="Oxossi Mestre Tarzan"/>
+  <h1>Axe da Ilha</h1>
+  <div class="table">
+    <h2>
+      Manuel Perrone
+    </h2>
+    <h2>
+      Dangeory Amaral
+    </h2>
+    <h3>
+      ​Monitor Tartaruga&nbsp;Ninja
+    </h3>
+    <h3>
+      Instrutora Portuguesa
+    </h3>
+  </div>
+  <a class="secondary" href="/about-axe-da-ilha-malta">About</a>
 </div>
 <div class="ani">
   <section class="container">

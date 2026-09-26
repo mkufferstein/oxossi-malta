@@ -200,17 +200,18 @@ a.secondary, a.secondary:visited {
     font-size                 : 1rem;
     font-weight               : bold;
     line-height               : 1.25em;
-    left                      : 3.75rem;
+    left                      : 4.75rem;
     height                    : 2.4rem;
     position                  : absolute;
     width                     : 3rem;
+    text-align                : center;
     top                       : .6rem;
   }
 
   .nav-links {
     display                   : flex;
     font-size                 : 1rem;
-    padding                   : 0 2rem 0 0;
+    padding                   : 0 2rem 0 1rem;
   }
 
   .navbar > .container.open > .nav-links {
