@@ -34,9 +34,9 @@
 				<a href="/" class="logo"></a>
 				<ul class="nav-links">
 						<li><a href="/capoeira-classes-malta">Capoeira Classes</a></li>
-						<li><a href="/workshop">Workshops</a></li>
 						<li><a href="/axe-da-ilha-2026">1˚ Axe da Ilha Festival</a></li>
-						<li><a href="/about-oxossi-capoeira-malta">About Us</a></li>
+						<li><a href="/workshop">Workshops</a></li>
+						<li><a href="/about-axe-da-ilha-malta">About Us</a></li>
 						<li><a href="/contact">Contact</a></li>
 				</ul>
 				<a href="#" class="secondary">Schedule</a>
