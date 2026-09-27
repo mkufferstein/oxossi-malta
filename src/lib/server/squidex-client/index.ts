@@ -1,12 +1,13 @@
+import { env } from '$env/dynamic/private'
+
 import { SquidexClient } from '@squidex/squidex'
 
 const Squidex = new SquidexClient({
-    appName: "oxossi-malta",
-    clientId: "oxossi-malta:read-only",
-    clientSecret: "ovepsemzeupqqwn72dfymxipcug26epbwf1safvwyhmx",
-    environment: "https://cloud.squidex.io"
+    appName: env.SQUIDEX_APP_NAME,
+    clientId: env.SQUIDEX_CLIENT_ID,
+    clientSecret: env.SQUIDEX_CLIENT_SECRET
 })
 
 export {
-  Squidex
+  Squidex,
 }

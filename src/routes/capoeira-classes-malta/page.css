@@ -1,0 +1,22 @@
+#classesintro {
+  padding                   : 4rem 1rem;
+  text-align                : center;
+}
+
+#classesintro h1 {
+  font-size                 : 2rem;
+  margin                    : 0;
+  padding                   : 0 2rem;
+}
+
+#classesintro h2 {
+  font-size                 : 1.5rem;
+  margin                    : 0;
+  padding                   : 1.5rem 2rem;
+}
+
+@media (min-width: 768px) {
+  #classesintro {
+    padding                   : 4rem;
+  }
+}

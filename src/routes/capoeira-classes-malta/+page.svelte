@@ -1,40 +1,38 @@
 <script lang="ts">
-  import SvelteMarkdown from '@humanspeak/svelte-markdown'
   import type { PageProps } from './$types'
 
-  const squidexDomain = "https://cloud.squidex.io/api/assets/oxossi-malta/"
+  import { env } from '$env/dynamic/public'
+
+  import {
+    Layout,
+  } from '$lib/layout/index'
+
+  import {
+    COMPONENT_HERO,
+    COMPONENT_HIGHLIGHTS,
+   } from '$lib/component/index.js'
+
+  import './page.css'
 
   let { data }: PageProps = $props();
 
-  let classes = data.post.items[0].data,
-    highlights = data.highlights.items
-console.log(highlights)
+  const layout = data?.layout?.items?.[0]?.data?.content?.en
+
+  let heroBanner = layout.find(c => c.schemaName === COMPONENT_HERO),
+    highlights = layout.find(c => c.schemaName === COMPONENT_HIGHLIGHTS)
 </script>
-<section class="container introduction">
-  <h1>{classes.title.en}</h1>
-  <h2>{classes['sub-title'].en}</h2>
-  <SvelteMarkdown source={classes.description.en} />
-</section>
-<div class="highlights">
-  <section class="container">
-    {#each highlights as highlight}
-      <img src={squidexDomain + highlight.data.banner.iv } alt={highlight.data.title.en} />
-      <div class="highlight">
-        <h1>
-          {highlight.data.title.en}
-        </h1>
-        <h2>
-          {highlight.data.description.en}
-        </h2>
-        {#if highlight.data.ctaText.en}
-          <a href="">{highlight.data.ctaText.en}</a>
-        {/if}
-      </div>
-    {/each}
-  </section>
-</div>
-<section class="container">
-  <SvelteMarkdown source={classes.introDescription?.en} />
-</section>
-<div class="htg">
-</div>
+
+<svelte:head>
+  <meta property="og:title" content="Axe Da Ilha Capoeira Malta" />
+  <meta property="og:description" content="Afro-Brazilian martial-art, with traditional music, energy, body communication, acrobatics, dance, combat, community, harmony, elegance, balance... Capoeira Is all of this and more! Welcome to the family." />
+  <meta property="og:image" content={env.PUBLIC_SQUIDEX_ENVIRONMENT + env.PUBLIC_SQUIDEX_ASSETS + heroBanner?.banner} />
+  {#each highlights?.list as highlight}
+    <meta property="og:image" content={env.PUBLIC_SQUIDEX_ENVIRONMENT + env.PUBLIC_SQUIDEX_ASSETS + highlight.banner} />
+  {/each}
+  <meta property="og:url" content="https://www.capoeiramalta.com/" />
+
+  <meta name="description" content="Afro-Brazilian martial-art, with traditional music, energy, body communication, acrobatics, dance, combat, community, harmony, elegance, balance... Capoeira Is all of this and more! Welcome to the family." />
+  <meta name="keywords" content="Capoeira, Brazil, Brazilian, Martial, art, combat, culture, training, lessons" />
+</svelte:head>
+
+<Layout {layout} />

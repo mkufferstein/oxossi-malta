@@ -1,0 +1,9 @@
+#more-information,
+#adi-poster {
+  text-align                : center;
+}
+
+#adi-poster img {
+  border-radius             : .75rem;
+  width                     : 75%;
+}

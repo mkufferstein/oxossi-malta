@@ -81,6 +81,10 @@ h1 {
   width                     : 3.5rem;
 }
 
+.primary {
+  background-color          : var(--primary-color);
+}
+
 .secondary {
   background-color          : var(--secondary-color);
   /* border                    : solid .125rem var(--dark-text); */
@@ -88,10 +92,13 @@ h1 {
   display                   : block;
   font-family               : 'Bebas Neue', sans-serif;
   font-size                 : 2rem;
-  grid-area                 : schedule;
   justify-self              : center;
   padding                   : .125rem 1rem 0;
   text-decoration           : none;
+}
+
+.navbar a.secondary {
+  grid-area                 : schedule;
 }
 
 a.secondary, a.secondary:visited {
