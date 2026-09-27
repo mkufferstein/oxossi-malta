@@ -5,9 +5,6 @@
   const {
     paragraph,
   } = $props()
-
-console.log('desdb',paragraph)
-
 </script>
 
 <div class="{paragraph?.theme?.theme}">

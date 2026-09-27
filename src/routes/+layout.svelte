@@ -8,8 +8,6 @@
 
   let { children, data } = $props();
 
-console.log('sscsc', data)
-
   const {
     social
   } = data
