@@ -1,0 +1,88 @@
+
+.highlights {
+  background-color          : var(--accent-color);
+  padding                   : 1.5rem 0 0;
+}
+
+.highlights > .container {
+  display                   : grid;
+  gap                       : 0;
+  grid-template-columns     : 1fr;
+
+}
+
+.highlights > .container > img {
+  border-radius             : .75rem .75rem 0 0;
+  object-fit                : cover;
+  width                     : 100%;
+}
+
+.highlight {
+  background-color          : var(--light-accent-color);
+  border-radius             : 0 0 .75rem .75rem;
+  color                     : var(--light-text);
+  margin                    : 0 0 1rem;
+  overflow                  : hidden;
+  padding                   : 1.5rem .5rem;
+  text-align                : center;
+}
+
+.highlight h1 {
+  font-size                 : 1.75rem;
+  padding                   : .75rem 0;
+}
+
+.highlight h2 {
+  font-size                 : 1rem;
+  padding                   : .5rem 0;
+}
+
+.highlight a {
+  background-color          : var(--primary-color);
+  border-radius             : .5rem;
+  color                     : var(--dark-text);
+  display                   : inline-block;
+  font-family               : 'Bebas Neue', sans-serif;
+  font-size                 : 1.5rem;
+  margin                    : 1rem 0 0;
+  padding                   : .5rem 1.25rem;
+  text-decoration           : none;
+}
+
+
+@media (min-width: 768px) {
+  .highlights {
+    padding                   : 2rem 0 3rem;
+  }
+
+  .highlights > .container {
+    gap                       : 1rem;  
+    grid-template-columns     : 1fr 1fr;
+  }
+
+  .highlights > .container > img {
+    border-radius             : .75rem;
+    object-fit                : cover;
+    width                     : 100%;
+  }
+
+  .highlight {
+    border-radius             : .75rem;
+    margin                    : 0;
+  }
+
+  .highlight > h2 {
+    min-height                : 7.5rem;
+  }
+
+  .highlight:nth-child(4) {
+    grid-column-start: 1;
+    grid-row-start: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .highlights > .container {
+    grid-template-columns     : 1fr 1fr 1fr;
+  }
+}

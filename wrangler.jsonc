@@ -10,5 +10,11 @@
   "assets": {
     "binding": "ASSETS",
     "directory": ".svelte-kit/cloudflare"
+  },
+  "vars": {
+    "PUBLIC_SQUIDEX_ASSETS": "/api/assets/oxossi-malta/",
+    "PUBLIC_SQUIDEX_ENVIRONMENT": "https://cloud.squidex.io",
+    "SQUIDEX_APP_NAME": "oxossi-malta",
+    "SQUIDEX_CLIENT_ID": "oxossi-malta:read-only"
   }
 }
