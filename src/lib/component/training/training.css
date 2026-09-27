@@ -1,0 +1,18 @@
+.trainingContainer {
+  align-items                   : center;
+  display                       : grid;
+  gap                           : .5rem;
+  grid-template-columns         : auto auto auto auto auto;
+  justify-items                 : center;
+  padding                       : 2rem 1rem;
+}
+
+.trainingType {
+  /* padding                       : .5rem 1rem; */
+  text-align                    : center;
+}
+
+.training {
+  padding                       : .5rem 1rem;
+  text-align                    : center;
+}

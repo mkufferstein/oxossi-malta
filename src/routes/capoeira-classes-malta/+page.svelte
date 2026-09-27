@@ -8,6 +8,10 @@
   } from '$lib/layout/index'
 
   import {
+    Training,
+  } from '$lib/component/index'
+
+  import {
     COMPONENT_HERO,
     COMPONENT_HIGHLIGHTS,
    } from '$lib/component/index.js'
@@ -16,7 +20,10 @@
 
   let { data }: PageProps = $props();
 
-  const layout = data?.layout?.items?.[0]?.data?.content?.en
+  const layout = data?.layout?.items?.[0]?.data?.content?.en,
+    locationData = data?.locationData,
+    training = data?.training,
+    typeData = data?.typeData
 
   let heroBanner = layout.find(c => c.schemaName === COMPONENT_HERO),
     highlights = layout.find(c => c.schemaName === COMPONENT_HIGHLIGHTS)
@@ -36,3 +43,8 @@
 </svelte:head>
 
 <Layout {layout} />
+<div class="primary">
+  <section class="container">
+    <Training locationData={locationData?.items} training={training?.items} typeData={typeData?.items} />
+  </section>
+</div>
