@@ -1,10 +1,11 @@
 import { 
-  Squidex,
+  getClient,
 } from '$lib/index.js';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ platform }) => {
+  const squidex = getClient(platform)
   return {
-    layout: await Squidex.contents.getContents('axe-da-ilha', {  }),
+    layout: await squidex.contents.getContents('axe-da-ilha', {  }),
   }
 }

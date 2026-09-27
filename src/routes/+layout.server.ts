@@ -1,10 +1,11 @@
 import { 
-  Squidex,
+  getClient,
 } from '$lib/index.js';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ platform }) => {
+  const squidex = getClient(platform)
   return {
-    social: await Squidex.contents.getContents('social', { $orderby: 'data/order/iv' }),
+    social: await squidex.contents.getContents('social', { $orderby: 'data/order/iv' }),
   }
 }

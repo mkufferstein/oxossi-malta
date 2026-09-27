@@ -1,1 +1,1 @@
-export { Squidex } from './server/squidex-client/index.js'
+export { getClient } from './server/squidex-client/index.js'
