@@ -53,7 +53,7 @@
             <li><a href="/about-axe-da-ilha-malta">About</a></li>
             <li><a href="/contact">Contact</a></li>
         </ul>
-        <a href="#" class="secondary">Schedule</a>
+        <a href="/capoeira-classes-malta#training" class="secondary">Schedule</a>
         <span class={classList.join(' ')} onclick={toggleMenu}></span>
     </div>
 </nav>

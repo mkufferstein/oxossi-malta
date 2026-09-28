@@ -1,6 +1,10 @@
 <script lang="ts">
   import './training.css'
 
+  import {
+    dayCard,
+  } from './day-card.svelte'
+
   const {
     locationData,
     training,
@@ -11,17 +15,8 @@
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday']
 
   let locationsMapped = {},
-    repeatedTraining: {[key: string] : {}} = {},
+    byDay: {[key: string] : []} = {},
     typesMapped = {}
-
-  training.map(currentTraining =>  {
-    const type = currentTraining?.data?.type?.iv?.[0]
-    const day = currentTraining?.data?.repeatsOn?.iv
-    if (!repeatedTraining[type]) {
-      repeatedTraining[type] = {}
-    }
-    repeatedTraining[type][day] = currentTraining
-  })
 
   typeData.map(currentType => {
     const id = currentType?.id
@@ -33,18 +28,53 @@
     locationsMapped[id] = currentLocation
   })
 
-console.log(repeatedTraining, locationsMapped)
+  training.map(currentTraining =>  {
+    const day = currentTraining?.data?.repeatsOn?.iv
+    const location = currentTraining?.data?.location?.iv
+    const type = currentTraining?.data?.type?.iv
+
+    const trainigData : {} = {
+      location: locationsMapped[location]?.data?.name?.iv,
+      startOrder: 1500,
+      time: `${currentTraining?.data?.startTime?.iv} - ${currentTraining?.data?.endTime?.iv}`,
+      type: typesMapped[type]?.data?.title?.en,
+      typeDescription: typesMapped[type]?.data?.description?.en
+    }
+
+    const [h, m, ap] = currentTraining?.data?.startTime?.iv?.split(/[.\s:]/i)
+    if (ap 
+      && ['am', 'pm'].indexOf(ap.toLowerCase()) > -1) {
+      let hour: number = +h % 12
+      hour += (ap.toLowerCase() === 'pm')
+        ? 12
+        : 0
+      trainigData.startOrder = hour * 60 + +m
+    } else {
+      trainigData.startOrder = +h * 60 + +m
+    }
+
+    if (!byDay[day]) {
+      byDay[day] = []
+    }
+    byDay[day].push(trainigData)
+
+    byDay[day].sort((a, b) => a.startOrder - b.startOrder)
+  })
+
+
+console.log(byDay, locationsMapped)
 
 </script>
 <div class="trainingContainer">
-    <div class="day">
-    </div>
   {#each days as day}
-    <h3 class="day">
-      {day}
-    </h3>
+    {#if byDay[day]}
+      {@render dayCard({
+        day,
+        trainings: byDay[day]
+      })}
+    {/if}
   {/each}
-  {#each types as type}
+  <!-- {#each types as type}
     <div class="trainingType">
       <h3>
         {typesMapped[type]?.data?.title?.en}
@@ -63,5 +93,5 @@ console.log(repeatedTraining, locationsMapped)
         </p>
       </div>
     {/each}
-  {/each}
+  {/each} -->
 </div>

@@ -1,8 +1,10 @@
 .trainingContainer {
-  align-items                   : center;
-  display                       : grid;
-  gap                           : .5rem;
-  grid-template-columns         : auto auto auto auto auto;
+  align-items                   : stretch;
+  align-content                 : center;
+  display                       : flex;
+  justify-content               : center;
+  flex-wrap                     : wrap;
+  gap                           : 1rem;
   justify-items                 : center;
   padding                       : 2rem 1rem;
 }
@@ -15,4 +17,43 @@
 .training {
   padding                       : .5rem 1rem;
   text-align                    : center;
+}
+
+.dayCard {
+  background-color              : var(--light-bg);
+  border-radius                 : .75rem;
+  box-shadow                    : 0 .125rem .375rem rgba(var(--dark-text-rgb), 0.08);
+  flex                          : 0 0 18rem;
+  padding                       : 1rem;
+}
+
+.dayCard > h2 {
+  color                         : var(--accent-color);
+}
+
+.trainingSession {
+  border-top                    : .0625rem solid rgba(var(--dark-text-rgb), 0.08);
+}
+
+.trainingSession > p {
+  padding                       : .25rem 1.5rem;
+}
+
+.trainingType {
+  background-color              : var(--primary-color);
+  border-radius                 : 10rem;
+  flex                          : none;
+  font-size                     : .75rem;
+  font-weight                   : bold;
+  padding                       : 0 .5rem;
+}
+
+.trainingType.adults {
+  background-color              : var(--secondary-color);
+  color                         : var(--light-text);
+}
+
+.trainingTime {
+  font-size                     : 1.25rem;
+  font-weight                   : bold;
 }

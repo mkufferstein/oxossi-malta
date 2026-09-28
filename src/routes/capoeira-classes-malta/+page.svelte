@@ -44,7 +44,7 @@
 
 <Layout {layout} />
 <div class="primary">
-  <section class="container">
+  <section class="container" id="training">
     <Training locationData={locationData?.items} training={training?.items} typeData={typeData?.items} />
   </section>
 </div>
