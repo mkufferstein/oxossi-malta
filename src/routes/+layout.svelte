@@ -4,6 +4,11 @@
   import { env } from '$env/dynamic/public'
 
   import favicon from '$lib/assets/favicon.svg';
+
+  import {
+    modal,
+  } from '$lib/modal/index.js'
+
   import './layout.css'
 
   let { children, data } = $props();
@@ -22,6 +27,10 @@
 
   const toggleMenu = () => {
     isMenuOpen = !isMenuOpen
+  }
+
+  const closeModal = () => {
+    modal.clear()
   }
 
   $effect(() => {
@@ -77,3 +86,13 @@
     <p>&copy; 2025 Capoeira Oxossi Malta. All rights reserved.</p>
   </div>
 </footer>
+
+{#if modal?.component}
+  {@const ModalComponent = modal.component}
+  <div id="modal">
+    <div class="iconoir-xmark" id="closeModal" onclick={closeModal}></div>
+    <section class="container">
+      <ModalComponent {...modal.properties}/>
+    </section>
+  </div>
+{/if}

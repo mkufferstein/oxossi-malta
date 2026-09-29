@@ -7,6 +7,7 @@
   --light-accent-color      : #795d42; */
   --dark-bg                 : #121212;
   --light-bg                : #FFFBEF;
+  --light-bg-rgb            : 255, 251, 239;
   --dark-text               : #121212;
   --dark-text-rgb           : 18, 18, 18;
   --light-text              : #FFFBEF;
@@ -187,7 +188,30 @@ a.secondary, a.secondary:visited {
 .social-links > a > img {
   width                     : 1.5rem;
   object-fit                : cover;
-  margin                   : 0 .5rem 0 0;
+  margin                    : 0 .5rem 0 0;
+}
+
+#modal {
+  background-color          : rgba(var(--light-bg-rgb), .9);
+  bottom                    : 0;
+  left                      : 0;
+  position                  : fixed;
+  right                     : 0;
+  top                       : 0;
+  z-index                   : 15;
+}
+
+#closeModal {
+  cursor                    : pointer;
+  font-size                 : 3rem;
+  padding                   : 2.5rem;
+  width                     : 100%;
+}
+
+#closeModal:before {
+  position                  : absolute;
+  right                     : 1rem;
+  top                       : 1rem;
 }
 
 @media (min-width: 768px) {

@@ -1,9 +1,7 @@
 <script lang="ts">
   import './training.css'
 
-  import {
-    dayCard,
-  } from './day-card.svelte'
+  import DayCard from './day-card.svelte'
 
   const {
     locationData,
@@ -34,7 +32,7 @@
     const type = currentTraining?.data?.type?.iv
 
     const trainigData : {} = {
-      location: locationsMapped[location]?.data?.name?.iv,
+      location: locationsMapped[location],
       startOrder: 1500,
       time: `${currentTraining?.data?.startTime?.iv} - ${currentTraining?.data?.endTime?.iv}`,
       type: typesMapped[type]?.data?.title?.en,
@@ -68,10 +66,7 @@ console.log(byDay, locationsMapped)
 <div class="trainingContainer">
   {#each days as day}
     {#if byDay[day]}
-      {@render dayCard({
-        day,
-        trainings: byDay[day]
-      })}
+      <DayCard {day} trainings={byDay[day]} />
     {/if}
   {/each}
   <!-- {#each types as type}

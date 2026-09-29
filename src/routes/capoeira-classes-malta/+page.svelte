@@ -8,13 +8,15 @@
   } from '$lib/layout/index'
 
   import {
+    COMPONENT_HERO,
+    COMPONENT_HIGHLIGHTS,
+    Location,
     Training,
   } from '$lib/component/index'
 
   import {
-    COMPONENT_HERO,
-    COMPONENT_HIGHLIGHTS,
-   } from '$lib/component/index.js'
+    modal,
+   } from '$lib/modal/index.js'
 
   import './page.css'
 
@@ -48,3 +50,11 @@
     <Training locationData={locationData?.items} training={training?.items} typeData={typeData?.items} />
   </section>
 </div>
+<section class="container">
+  <h1>How to get there?</h1>
+</section>
+<section class="container" id="location">
+  {#each locationData?.items as location}
+    <Location {location} />
+  {/each}
+</section>
