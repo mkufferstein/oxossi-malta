@@ -18,7 +18,7 @@
     modal,
    } from '$lib/modal/index.js'
 
-  import './page.css'
+  // import './page.css'
 
   let { data }: PageProps = $props();
 
@@ -32,16 +32,13 @@
 </script>
 
 <svelte:head>
-  <meta property="og:title" content="Axe Da Ilha Capoeira Malta" />
-  <meta property="og:description" content="Afro-Brazilian martial-art, with traditional music, energy, body communication, acrobatics, dance, combat, community, harmony, elegance, balance... Capoeira Is all of this and more! Welcome to the family." />
-  <meta property="og:image" content={env.PUBLIC_SQUIDEX_ENVIRONMENT + env.PUBLIC_SQUIDEX_ASSETS + heroBanner?.banner} />
-  {#each highlights?.list as highlight}
-    <meta property="og:image" content={env.PUBLIC_SQUIDEX_ENVIRONMENT + env.PUBLIC_SQUIDEX_ASSETS + highlight.banner} />
-  {/each}
-  <meta property="og:url" content="https://www.capoeiramalta.com/" />
+  <title>Capoeira Classes in Malta</title>
+  <meta property="og:title" content="Capoeira Classes in Malta" />
+  <meta property="og:description" content="Capoeria classes schedule - available in Mellieha and Pembroke" />
+  <meta property="og:url" content="https://www.capoeiramalta.com/capoeira-classes-malta" />
 
-  <meta name="description" content="Afro-Brazilian martial-art, with traditional music, energy, body communication, acrobatics, dance, combat, community, harmony, elegance, balance... Capoeira Is all of this and more! Welcome to the family." />
-  <meta name="keywords" content="Capoeira, Brazil, Brazilian, Martial, art, combat, culture, training, lessons" />
+  <meta name="description" content="Capoeria classes schedule - available in Mellieha and Pembroke" />
+  <meta name="keywords" content="capoeira, classes, sessions, training, malta, mellieha, pembroke" />
 </svelte:head>
 
 <Layout {layout} />

@@ -23,16 +23,13 @@
 </script>
 
 <svelte:head>
-  <meta property="og:title" content="Axe Da Ilha Capoeira Malta" />
-  <meta property="og:description" content="Afro-Brazilian martial-art, with traditional music, energy, body communication, acrobatics, dance, combat, community, harmony, elegance, balance... Capoeira Is all of this and more! Welcome to the family." />
-  <meta property="og:image" content={env.PUBLIC_SQUIDEX_ENVIRONMENT + env.PUBLIC_SQUIDEX_ASSETS + heroBanner?.banner} />
-  {#each highlights?.list as highlight}
-    <meta property="og:image" content={env.PUBLIC_SQUIDEX_ENVIRONMENT + env.PUBLIC_SQUIDEX_ASSETS + highlight.banner} />
-  {/each}
-  <meta property="og:url" content="https://www.capoeiramalta.com/" />
+  <title>Axe da Ilha Capoeira Festival in Malta</title>
+  <meta property="og:title" content="Axe da Ilha Capoeira Festival in Malta" />
+  <meta property="og:description" content="2rd-4th October 2026 Annual International Capoeira Event in Malta" />
+  <meta property="og:url" content="https://www.capoeiramalta.com/axe-da-ilha-2026" />
 
-  <meta name="description" content="Afro-Brazilian martial-art, with traditional music, energy, body communication, acrobatics, dance, combat, community, harmony, elegance, balance... Capoeira Is all of this and more! Welcome to the family." />
-  <meta name="keywords" content="Capoeira, Brazil, Brazilian, Martial, art, combat, culture, training, lessons" />
+  <meta name="description" content="2rd-4th October 2026 Annual International Capoeira Event in Malta" />
+  <meta name="keywords" content="Annual, largest, International, Capoeira, Event, Malta" />
 </svelte:head>
 
 <Layout {layout} />
