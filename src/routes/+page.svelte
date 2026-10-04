@@ -23,6 +23,7 @@
 </script>
 
 <svelte:head>
+  <title>Axe Da Ilha Capoeira Malta</title>
   <meta property="og:title" content="Axe Da Ilha Capoeira Malta" />
   <meta property="og:description" content="Afro-Brazilian martial-art, with traditional music, energy, body communication, acrobatics, dance, combat, community, harmony, elegance, balance... Capoeira Is all of this and more! Welcome to the family." />
   <meta property="og:image" content={env.PUBLIC_SQUIDEX_ENVIRONMENT + env.PUBLIC_SQUIDEX_ASSETS + heroBanner?.banner} />
