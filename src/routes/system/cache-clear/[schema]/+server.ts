@@ -1,4 +1,4 @@
-import crypto from 'node:crypto'
+import crypto, { sign } from 'node:crypto'
 
 import { env } from '$env/dynamic/private'
 
@@ -21,8 +21,8 @@ export const POST: RequestHandler = async ({ params, platform, request, setHeade
 
   const cachedClient = getCachedClient(platform)
   const raw = await request.text()
-  const signature = request.headers.get('X-Signature') ?? ''
-  const expected = crypto.createHmac('sha256', realEnv.SQUIDEX_WEBHOOK_SECRET).update(raw).digest('hex')
+  const signature = request.headers.get('x-signature') ?? ''
+  const expected = crypto.createHash('sha256').update(raw + realEnv.SQUIDEX_WEBHOOK_SECRET).digest('base64')
 
   if(signature.length !== expected.length
     || !crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expected))) {
