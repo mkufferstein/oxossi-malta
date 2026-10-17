@@ -34,10 +34,7 @@ export const POST: RequestHandler = async ({ params, platform, request, setHeade
     )
   }
 
-  const event = JSON.parse(raw)
-  const schema = event.payload?.schemaId?.split(';').pop() ?? event.payload?.schemaId
-  
-  cachedClient.invalidate(schema)
+  cachedClient.invalidate(params?.schema)
 
   setHeaders({ 'cache-control': 'no-store' })
   return json('OK')
