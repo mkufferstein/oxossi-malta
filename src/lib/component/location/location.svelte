@@ -7,8 +7,6 @@
     location,
   } = $props()
 
-console.log('LLCOCOL', location)
-
   const address = location?.data?.address?.iv,
     lat = location?.data?.location?.iv?.latitude,
     lng = location?.data?.location?.iv?.longitude,

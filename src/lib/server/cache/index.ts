@@ -1,4 +1,3 @@
-import { invalidate } from '$app/navigation';
 import { env } from '$env/dynamic/private'
 import { getClient } from '../squidex-client/index.js'
 
@@ -12,6 +11,7 @@ export function getCachedClient(platform?: any) {
     const hit = data.get(schema)
     if (hit
       && hit.expires > Date.now()) {
+      console.log(`Cache hit for ${schema}`)
       return hit.data
     }
 
