@@ -58,10 +58,6 @@
 
     byDay[day].sort((a, b) => a.startOrder - b.startOrder)
   })
-
-
-console.log(byDay, locationsMapped)
-
 </script>
 <div class="trainingContainer">
   {#each days as day}
