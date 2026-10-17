@@ -15,7 +15,7 @@ export function getCachedClient(platform?: any) {
     
     if (hit
       && hit.expires > Date.now()) {
-      console.log(`Cache hit for ${schema}`)
+      // console.log(`Cache hit for ${schema}`)
       return hit.data
     }
 
