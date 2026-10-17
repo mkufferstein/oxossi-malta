@@ -73,14 +73,14 @@ h1 {
     ". schedule .";
 }
 
-.logo {
-  background-image          : url('img/adi.png');
-  background-size           : cover;
+a.logo {
   cursor                    : pointer;
   grid-area                 : logo;
-  height                    : 3.5rem;
   position                  : relative;
-  width                     : 3.5rem;
+}
+
+img.logo {
+  height                    : 3.5rem;
 }
 
 .primary {
@@ -229,7 +229,7 @@ a.secondary, a.secondary:visited {
     grid-template-areas       : "logo links schedule";
   }
 
-  .logo::after {
+  a.logo::after {
     content                   : 'Capoeira Malta';
     display                   : block;
     font-family               : 'Bebas Neue', sans-serif;

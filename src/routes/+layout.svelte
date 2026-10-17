@@ -54,7 +54,9 @@
 <!-- Navigation -->
 <nav class="navbar">
     <div class="container" class:open={isMenuOpen}>
-        <a href="/" class="logo"></a>
+        <a class="logo" href="/" title="Axe da Ilha Main page">
+          <img alt="Axe da Ilha logo" class="logo" src="img/adi.png" />
+        </a>
         <ul class="nav-links">
             <li><a href="/capoeira-classes-malta">Classes</a></li>
             <li><a href="/axe-da-ilha-2026">1˚ Axe da Ilha Festival</a></li>
