@@ -26,10 +26,10 @@ export function getCachedClient(platform?: any) {
     return result
   }
 
-  function invalidate(prefix?: string) {
+  async function invalidate(prefix?: string) {
     if (!prefix) return
 
-    cacheEngine.delete(prefix)
+    await cacheEngine.delete(prefix)
   }
 
   return {

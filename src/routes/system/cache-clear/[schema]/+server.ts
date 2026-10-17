@@ -34,8 +34,8 @@ export const POST: RequestHandler = async ({ params, platform, request, setHeade
     )
   }
 
-  cachedClient.invalidate(params?.schema)
+  await cachedClient.invalidate(params?.schema)
 
   setHeaders({ 'cache-control': 'no-store' })
-  return json('OK')
+  return json(`${params?.schema} cleared`)
 }
