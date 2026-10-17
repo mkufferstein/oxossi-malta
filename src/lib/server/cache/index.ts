@@ -16,7 +16,7 @@ export function getCachedClient(platform?: any) {
     }
 
     const result = await squidex.contents.getContents(schema, requestParameters)
-    const cacheTtl = Date.now() + realEnv.CONTENT_CACHE_TTL
+    const cacheTtl = Date.now() + parseInt(realEnv.CONTENT_CACHE_TTL)
     data.set(schema, { data: result, expires: cacheTtl });
     console.log(`Cache set for '${schema}' until ${cacheTtl}`)
     return result
