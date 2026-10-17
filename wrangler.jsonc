@@ -18,6 +18,12 @@
     "binding": "ASSETS",
     "directory": ".svelte-kit/cloudflare"
   },
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "1b75eed6f29b4c95a6b6f73f1b519e7a",
+    }
+  ],
   "vars": {
     "CONTENT_CACHE_TTL": "86400000",
     "PUBLIC_SQUIDEX_ASSETS": "/api/assets/oxossi-malta/",
