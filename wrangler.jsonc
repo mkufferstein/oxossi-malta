@@ -5,13 +5,21 @@
   "compatibility_date": "2026-09-26",
   "compatibility_flags": ["nodejs_compat"],
   "observability": {
-    "enabled": true
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true
+    },
+    "traces": {
+      "enabled": false
+    }
   },
   "assets": {
     "binding": "ASSETS",
     "directory": ".svelte-kit/cloudflare"
   },
   "vars": {
+    "CONTENT_CACHE_TTL": "86400000",
     "PUBLIC_SQUIDEX_ASSETS": "/api/assets/oxossi-malta/",
     "PUBLIC_SQUIDEX_ENVIRONMENT": "https://cloud.squidex.io",
     "SITE_URL": "https://capoeiramalta.com",

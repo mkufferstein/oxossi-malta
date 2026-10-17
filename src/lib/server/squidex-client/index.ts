@@ -3,7 +3,7 @@ import { SquidexClient } from '@squidex/squidex'
 
 let client: SquidexClient | undefined
 
-export function getClient(platform) {
+export function getClient(platform?: any) {
   const realEnv = platform?.env ?? env
   if (!client) {
     client = new SquidexClient({

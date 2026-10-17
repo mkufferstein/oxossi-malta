@@ -1,11 +1,11 @@
 import { 
-  getClient,
+  getCachedClient,
 } from '$lib/index.js';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ platform }) => {
-  const squidex = getClient(platform)
+  const cachedClient = getCachedClient(platform)
   return {
-    layout: await squidex.contents.getContents('about', {  }),
+    layout: await cachedClient.get('about', {  }),
   }
 }
