@@ -1,6 +1,7 @@
 import { env } from '$env/dynamic/private'
 import { getClient } from '../squidex-client/index.js'
 
+const INSTANCE = crypto.randomUUID()
 const data = new Map<string, {data: any; expires: number}>
 
 export function getCachedClient(platform?: any) {
@@ -18,7 +19,7 @@ export function getCachedClient(platform?: any) {
     const result = await squidex.contents.getContents(schema, requestParameters)
     const cacheTtl = Date.now() + parseInt(realEnv.CONTENT_CACHE_TTL)
     data.set(schema, { data: result, expires: cacheTtl });
-    console.log(`Cache set for '${schema}' until ${cacheTtl}`)
+    console.log(`Cache set for '${schema}' until ${cacheTtl} @ ${INSTANCE}`)
     return result
   }
 
