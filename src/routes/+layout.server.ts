@@ -7,8 +7,8 @@ import type { PageServerLoad } from './$types';
 export const load: PageServerLoad = async ({ platform }) => {
   const cachedClient = getCachedClient(platform)
 
-  const price = await cachedClient.get('price', {  }),
-    training = await cachedClient.get('training', {  })
+  const price = await cachedClient.getContents('price', {  }),
+    training = await cachedClient.getContents('training', {  })
 
   let locationData,
     locations: string[] = [],
@@ -28,16 +28,16 @@ export const load: PageServerLoad = async ({ platform }) => {
   })
 
   if (locations.length > 0) {
-    locationData = await cachedClient.get('location', { $filter: `id in ("${locations.join('", "')}")`})
+    locationData = await cachedClient.getContents('location', { $filter: `id in ("${locations.join('", "')}")`})
   }
   if (types.length > 0) {
-    typeData = await cachedClient.get('trainingtype', { $filter: `id in ("${types.join('", "')}")`})
+    typeData = await cachedClient.getContents('trainingtype', { $filter: `id in ("${types.join('", "')}")`})
   }
 
   return {
     locationData,
     price,
-    social: await cachedClient.get('social', { $orderby: 'data/order/iv' }),
+    social: await cachedClient.getContents('social', { $orderby: 'data/order/iv' }),
     training,
     typeData,
   }

@@ -6,6 +6,6 @@ import type { PageServerLoad } from './$types';
 export const load: PageServerLoad = async ({ platform }) => {
   const cachedClient = getCachedClient(platform)
   return {
-    layout: await cachedClient.get('classes', {  }),
+    layout: await cachedClient.getContents('classes', {  }),
   }
 }

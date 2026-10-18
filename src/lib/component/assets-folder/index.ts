@@ -1,0 +1,1 @@
+export { default as AssetsFolder } from './assets-folder.svelte'

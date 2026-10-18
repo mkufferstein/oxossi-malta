@@ -1,8 +1,10 @@
 <script lang="ts">
   import {
+    COMPONENT_ASSET_FOLDER,
     COMPONENT_HERO,
     COMPONENT_HIGHLIGHTS,
     COMPONENT_PARAGRAPH,
+    AssetFolder,
     HeroBanner,
     Highlights,
     Paragraph,
@@ -14,6 +16,9 @@
 </script>
 
 {#each layout as component}
+  {#if component?.schemaName === COMPONENT_ASSET_FOLDER}
+    <AssetFolder imageBrowser={component} />
+  {/if}
   {#if component?.schemaName === COMPONENT_HERO}
     <HeroBanner heroBanner={component} />
   {/if}

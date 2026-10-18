@@ -1,28 +1,53 @@
 import { env } from '$env/dynamic/private'
 import { getClient } from '../squidex-client/index.js'
 
-const INSTANCE = crypto.randomUUID()
-// const data = new Map<string, {data: any; expires: number}>
-
 export function getCachedClient(platform?: any) {
   const realEnv = platform?.env ?? env
   const cacheEngine = realEnv?.KV
   const squidex = getClient(platform)
 
-  const get = async (schema: string, requestParameters?: any) : Promise<any> => {
-    const cachedHit = await cacheEngine.get(schema)
+  async function get (cacheKey: string) : Promise<any> {
+    const cachedHit = await cacheEngine.get(cacheKey)
+
+    if (!cachedHit) {
+      return null
+    }
     const hit = JSON.parse(cachedHit)
     
-    if (hit
-      && hit.expires > Date.now()) {
-      // console.log(`Cache hit for ${schema}`)
-      return hit.data
+    if (!hit
+      || hit.expires < Date.now()) {
+      return null
     }
+    console.log(`Cache hit for ${cacheKey}`)
+    return hit.data
 
-    const result = await squidex.contents.getContents(schema, requestParameters)
+  }
+
+  async function set (schema: string, result: any) : Promise<void> {
     const cacheTtl = Date.now() + parseInt(realEnv.CONTENT_CACHE_TTL)
-    cacheEngine.put(schema, JSON.stringify({ data: result, expires: cacheTtl }))
-    console.log(`Cache set for '${schema}' until ${cacheTtl} @ ${INSTANCE}`)
+    cacheEngine.put(schema, JSON.stringify({data: result, expires: cacheTtl}))
+    console.log(`Cache set for '${schema}' until ${cacheTtl}`)
+  }
+
+  async function getContents(schema: string, requestParameters?: any) {
+    const cacheKey = schema
+    let result = await get(cacheKey)
+    if (result !== null) {
+      return result
+    }
+    result = await squidex.contents.getContents(schema, requestParameters)
+    set(cacheKey, result)
+    return result
+  }
+
+  async function getAssets(requestParameters?: any) {
+    const cacheKey = `asset-folder:${requestParameters.parentId}`
+    let result = await get(cacheKey)
+    if (result !== null) {
+      return result
+    }
+    result = await squidex.assets.getAssets(requestParameters)
+    set(cacheKey, result)
     return result
   }
 
@@ -33,7 +58,8 @@ export function getCachedClient(platform?: any) {
   }
 
   return {
-    get,
+    getAssets,
+    getContents,
     invalidate
   }
 }
