@@ -1,25 +1,15 @@
 <script lang="ts">
   import type { PageProps } from './$types'
 
-  import { env } from '$env/dynamic/public'
-
   import {
     Layout,
   } from '$lib/layout/index'
 
-  import {
-    COMPONENT_HERO,
-    COMPONENT_HIGHLIGHTS,
-   } from '$lib/component/index.js'
-
   import './page.css'
 
-  let { data }: PageProps = $props();
+  let { data }: PageProps = $props()
 
   const layout = data?.layout?.items?.[0]?.data?.content?.en
-
-  let heroBanner = layout.find(c => c.schemaName === COMPONENT_HERO),
-    highlights = layout.find(c => c.schemaName === COMPONENT_HIGHLIGHTS)
 </script>
 
 <svelte:head>
@@ -33,3 +23,4 @@
 </svelte:head>
 
 <Layout {layout} />
+<!-- <AssetsFolder folderId="2c6f7036-2f38-4a25-813b-e41e2afd4464" folderName="2026-axe-da-ilha" /> -->

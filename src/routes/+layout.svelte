@@ -92,7 +92,14 @@
 {#if modal?.component}
   {@const ModalComponent = modal.component}
   <div id="modal">
-    <div class="iconoir-xmark" id="closeModal" onclick={closeModal}></div>
+    <div id="modalControl">
+      <span class="modal-spacer"></span>
+      {#each modal?.controls as control}
+        <div class={control.class + " modal-control"} onclick={control.callback}></div>
+      {/each}
+      <span class="modal-spacer"></span>
+      <div class="iconoir-xmark modal-control" onclick={closeModal}></div>
+    </div>
     <section class="container">
       <ModalComponent {...modal.properties}/>
     </section>
