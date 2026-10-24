@@ -4,4 +4,8 @@ export const COMPONENT_HERO = 'hero'
 
 export const COMPONENT_HIGHLIGHTS = 'highlights'
 
+export const COMPONENT_INSTAGRAM = 'instagram'
+
 export const COMPONENT_PARAGRAPH = 'paragraph'
+
+export const COMPONENT_TRAINING = 'training'
