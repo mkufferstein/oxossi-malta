@@ -13,7 +13,7 @@ import type {
 
 import { 
   getCachedClient,
-} from '$lib/index.js'
+} from '$lib/server/index.js'
 
 
 export const POST: RequestHandler = async ({ params, platform, request, setHeaders }) => {

@@ -1,18 +1,9 @@
 <script lang="ts">
   import type { PageProps } from './$types'
 
-  import { env } from '$env/dynamic/public'
-
   import {
     Layout,
   } from '$lib/layout/index'
-
-  import {
-    COMPONENT_HERO,
-    COMPONENT_HIGHLIGHTS,
-   } from '$lib/component/index.js'
-
-  // import './page.css'
 
   let { data }: PageProps = $props();
 

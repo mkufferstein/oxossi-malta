@@ -1,6 +1,6 @@
 import { 
   getCachedClient,
-} from '$lib/index.js';
+} from '$lib/server/index.js';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ platform }) => {

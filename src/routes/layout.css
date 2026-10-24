@@ -87,9 +87,17 @@ img.logo {
   background-color          : var(--primary-color);
 }
 
+.primary h1 {
+  color                     : var(--light-text);
+  font-size                 : 3rem;
+  text-align                : center;
+}
+
 .secondary {
   background-color          : var(--secondary-color);
-  /* border                    : solid .125rem var(--dark-text); */
+}
+
+a.secondary {
   border-radius             : .75rem;
   display                   : block;
   font-family               : 'Bebas Neue', sans-serif;

@@ -3,6 +3,10 @@
   import { env } from '$env/dynamic/public'
 
   import {
+    noop,
+  } from '$lib/index.js'
+
+  import {
     modal,
   } from '$lib/modal/index.js'
 
@@ -24,26 +28,37 @@
     }
     modal.component = Image
     modal.controls = []
+
+    let next = noop,
+      previous = noop
+
     if (assets?.items?.[index - 1]) {
+      previous = () => setImageModal(index - 1)
       modal.controls.push({
-        callback: () => setImageModal(index - 1),
+        callback: previous,
         class: 'iconoir-arrow-left',
       })
     }
     if (assets?.items?.[index + 1]) {
+      next = () => setImageModal(index + 1)
       modal.controls.push({
-        callback: () => setImageModal(index + 1),
+        callback: next,
         class: 'iconoir-arrow-right',
       })
     }
     modal.properties = {
       image: assets?.items?.[index],
+      next,
+      previous
     }
   }
 
   // console.log('ASS', imageBrowser)
   const loadImage = (event: Event) => {
     const target = event.currentTarget as HTMLImageElement
+    if (!target.dataset?.index) {
+      return
+    }
     const index = parseInt(target.dataset?.index)
     setImageModal(index)
   }
