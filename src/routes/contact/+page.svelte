@@ -1,25 +1,17 @@
 <script lang="ts">
   import type { PageProps } from './$types'
 
-  import { env } from '$env/dynamic/public'
-
   import {
     Layout,
   } from '$lib/layout/index'
 
-  import {
-    COMPONENT_HERO,
-    COMPONENT_HIGHLIGHTS,
-   } from '$lib/component/index.js'
-
-  // import './page.css'
+  import './page.css'
 
   let { data }: PageProps = $props();
 
-  const layout = data?.layout?.items?.[0]?.data?.content?.en
+  const layout = data?.layout?.items?.[0]?.data?.content?.en,
+    locationData = data?.locationData
 
-  let heroBanner = layout.find(c => c.schemaName === COMPONENT_HERO),
-    highlights = layout.find(c => c.schemaName === COMPONENT_HIGHLIGHTS)
 </script>
 
 <svelte:head>
@@ -32,4 +24,4 @@
   <meta name="keywords" content="contact, find, capoeira, malta, where, follow, social media" />
 </svelte:head>
 
-<Layout {layout} />
+<Layout {layout} {locationData} />

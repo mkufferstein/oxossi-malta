@@ -30,7 +30,7 @@
       <span class="trainingType {training.type?.toLowerCase()}">{training.type}</span>
       <span class="trainingTime">{training.time}</span>
       <div 
-        class="trainigLocation"
+        class="trainingLocation"
         data-key={index}
         onclick={showLocationModal}
         onkeyup={showLocationModal}

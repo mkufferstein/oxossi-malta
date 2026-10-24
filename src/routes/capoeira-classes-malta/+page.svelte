@@ -1,24 +1,9 @@
 <script lang="ts">
   import type { PageProps } from './$types'
 
-  import { env } from '$env/dynamic/public'
-
   import {
     Layout,
   } from '$lib/layout/index'
-
-  import {
-    COMPONENT_HERO,
-    COMPONENT_HIGHLIGHTS,
-    Location,
-    Training,
-  } from '$lib/component/index'
-
-  import {
-    modal,
-   } from '$lib/modal/index.js'
-
-  // import './page.css'
 
   let { data }: PageProps = $props();
 
@@ -26,9 +11,6 @@
     locationData = data?.locationData,
     training = data?.training,
     typeData = data?.typeData
-
-  let heroBanner = layout.find(c => c.schemaName === COMPONENT_HERO),
-    highlights = layout.find(c => c.schemaName === COMPONENT_HIGHLIGHTS)
 </script>
 
 <svelte:head>
@@ -41,17 +23,7 @@
   <meta name="keywords" content="capoeira, classes, sessions, training, malta, mellieha, pembroke" />
 </svelte:head>
 
-<Layout {layout} />
-<div class="primary">
-  <section class="container" id="training">
-    <Training locationData={locationData?.items} training={training?.items} typeData={typeData?.items} />
-  </section>
-</div>
-<section class="container">
-  <h1>How to get there?</h1>
-</section>
-<section class="container" id="location">
-  {#each locationData?.items as location}
-    <Location {location} />
-  {/each}
-</section>
+<Layout {layout}
+  {locationData}
+  {training}
+  {typeData} />

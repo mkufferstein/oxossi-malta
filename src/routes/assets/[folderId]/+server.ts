@@ -13,7 +13,7 @@ import type {
 
 import { 
   getCachedClient,
-} from '$lib/index.js'
+} from '$lib/server/index.js'
 
 
 export const GET: RequestHandler = async ({ params, platform }) => {

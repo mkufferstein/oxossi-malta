@@ -9,7 +9,8 @@
 
   let { data }: PageProps = $props()
 
-  const layout = data?.layout?.items?.[0]?.data?.content?.en
+  const layout = data?.layout?.items?.[0]?.data?.content?.en,
+    locationData = data?.locationData
 </script>
 
 <svelte:head>
@@ -22,5 +23,4 @@
   <meta name="keywords" content="Annual, largest, International, Capoeira, Event, Malta" />
 </svelte:head>
 
-<Layout {layout} />
-<!-- <AssetsFolder folderId="2c6f7036-2f38-4a25-813b-e41e2afd4464" folderName="2026-axe-da-ilha" /> -->
+<Layout {layout} {locationData} />

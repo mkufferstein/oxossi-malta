@@ -1,5 +1,5 @@
 .locationContainer {
-  background-color          : var(--light-bg);
+  /* background-color          : var(--light-bg); */
   border-radius             : .75rem;
   flex                      : 1;
   min-width                 : 17.5rem;

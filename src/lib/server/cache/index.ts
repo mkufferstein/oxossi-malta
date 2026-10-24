@@ -18,7 +18,7 @@ export function getCachedClient(platform?: any) {
       || hit.expires < Date.now()) {
       return null
     }
-    console.log(`Cache hit for ${cacheKey}`)
+    // console.log(`Cache hit for ${cacheKey}`)
     return hit.data
 
   }
@@ -26,7 +26,7 @@ export function getCachedClient(platform?: any) {
   async function set (schema: string, result: any) : Promise<void> {
     const cacheTtl = Date.now() + parseInt(realEnv.CONTENT_CACHE_TTL)
     cacheEngine.put(schema, JSON.stringify({data: result, expires: cacheTtl}))
-    console.log(`Cache set for '${schema}' until ${cacheTtl}`)
+    // console.log(`Cache set for '${schema}' until ${cacheTtl}`)
   }
 
   async function getContents(schema: string, requestParameters?: any) {
