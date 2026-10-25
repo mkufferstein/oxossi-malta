@@ -26,7 +26,7 @@ export async function handle({ event, resolve }) {
 console.log('redirect debug', env.PUBLIC_HOST, forceWWW, realHost, target, realHost + (target ?? event.url.pathname))
   if (target
     || forceWWW) {
-    redirect(301, realHost + (target ?? event.url.pathname) + event.url.search)
+    redirect(301, event.url.protocol + '//' + realHost + (target ?? event.url.pathname) + event.url.search)
   }
   return resolve(event);
 }
