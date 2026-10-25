@@ -1,5 +1,5 @@
 import { redirect } from '@sveltejs/kit';
-import { env } from '$env/dynamic/private'
+import { env } from '$env/dynamic/public'
 
 const redirects = new Map<string, string>([
   ['/about', '/about-axe-da-ilha-malta'],
