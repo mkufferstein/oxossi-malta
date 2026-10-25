@@ -23,7 +23,7 @@ export async function handle({ event, resolve }) {
     : event.url.hostname
   const target = redirects.get(event.url.pathname)
 
-console.log('redirect debug', env.PUBLIC_HOST, forceWWW, realHost, target, realHost + (target ?? event.url.pathname) + event.url.search )
+console.log('redirect debug', env.PUBLIC_HOST, forceWWW, realHost, target, realHost + (target ?? event.url.pathname))
   if (target
     || forceWWW) {
     redirect(301, realHost + (target ?? event.url.pathname) + event.url.search)
