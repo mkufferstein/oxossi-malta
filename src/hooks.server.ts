@@ -24,7 +24,7 @@ export async function handle({ event, resolve }) {
   const target = redirects.get(event.url.pathname)
   if (target
     || forceWWW) {
-    redirect(301, realHost + target || event.url.pathname + event.url.search);
+    redirect(301, realHost + (target ?? event.url.pathname) + event.url.search)
   }
   return resolve(event);
 }
