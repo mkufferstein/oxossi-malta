@@ -85,7 +85,7 @@
         </a>
       {/each}
     </div>
-    <p>&copy; 2025 Capoeira Oxossi Malta. All rights reserved.</p>
+    <p>&copy; 2025 Axe da Ilha - Capoeira Malta. All rights reserved.</p>
   </div>
 </footer>
 

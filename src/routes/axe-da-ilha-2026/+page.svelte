@@ -5,22 +5,18 @@
     Layout,
   } from '$lib/layout/index'
 
+  import {
+    Seo,
+  } from '$lib/component/index.js'
+
   import './page.css'
 
   let { data }: PageProps = $props()
 
   const layout = data?.layout?.items?.[0]?.data?.content?.en,
+    seo = data?.layout?.items?.[0]?.data?.seo?.en,
     locationData = data?.locationData
 </script>
 
-<svelte:head>
-  <title>Axe da Ilha Capoeira Festival in Malta</title>
-  <meta property="og:title" content="Axe da Ilha Capoeira Festival in Malta" />
-  <meta property="og:description" content="2rd-4th October 2026 Annual International Capoeira Event in Malta" />
-  <meta property="og:url" content="https://www.capoeiramalta.com/axe-da-ilha-2026" />
-
-  <meta name="description" content="2rd-4th October 2026 Annual International Capoeira Event in Malta" />
-  <meta name="keywords" content="Annual, largest, International, Capoeira, Event, Malta" />
-</svelte:head>
-
+<Seo settings={seo} />
 <Layout {layout} {locationData} />

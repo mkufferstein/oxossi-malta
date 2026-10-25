@@ -5,10 +5,12 @@ export const prerender = true
 export async function GET({platform}) {
   const pages = [
     { loc: '/', changefreq: 'weekly', priority: '1.0' },
-    { loc: '/capoeira-classes-malta', changefreq: 'monthly', priority: '0.8' },
+    { loc: '/capoeira-classes-malta', changefreq: 'monthly', priority: '0.9' },
+    { loc: '/axe-da-ilha-2026', changefreq: 'monthly', priority: '0.8' },
+    { loc: '/contact', changefreq: 'monthly', priority: '.6' },
   ]
 
-  const url = 'https://capoeiramalta.com'
+  const url = 'https://www.capoeiramalta.com'
 
   const render = (pages)
     .map(
