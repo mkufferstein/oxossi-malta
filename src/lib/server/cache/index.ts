@@ -3,30 +3,30 @@ import { getClient } from '../squidex-client/index.js'
 
 export function getCachedClient(platform?: any) {
   const realEnv = platform?.env ?? env
-  const cacheEngine = realEnv?.KV
   const squidex = getClient(platform)
 
   async function get (cacheKey: string) : Promise<any> {
-    const cachedHit = await cacheEngine.get(cacheKey)
-
-    if (!cachedHit) {
-      return null
+    // Only attempt to use cache in server environments
+    if (platform?.env?.KV) {
+      const cachedHit = await platform.env.KV.get(cacheKey)
+      if (cachedHit) {
+        const hit = JSON.parse(cachedHit)
+        if (hit && hit.expires > Date.now()) {
+          // console.log(`Cache hit for ${cacheKey}`)
+          return hit.data
+        }
+      }
     }
-    const hit = JSON.parse(cachedHit)
-    
-    if (!hit
-      || hit.expires < Date.now()) {
-      return null
-    }
-    // console.log(`Cache hit for ${cacheKey}`)
-    return hit.data
-
+    return null
   }
 
   async function set (schema: string, result: any) : Promise<void> {
-    const cacheTtl = Date.now() + parseInt(realEnv.CONTENT_CACHE_TTL)
-    cacheEngine.put(schema, JSON.stringify({data: result, expires: cacheTtl}))
-    // console.log(`Cache set for '${schema}' until ${cacheTtl}`)
+    // Only attempt to set cache in server environments
+    if (platform?.env?.KV) {
+      const cacheTtl = Date.now() + parseInt(realEnv.CONTENT_CACHE_TTL)
+      await platform.env.KV.put(schema, JSON.stringify({data: result, expires: cacheTtl}))
+      // console.log(`Cache set for '${schema}' until ${cacheTtl}`)
+    }
   }
 
   async function getContents(schema: string, requestParameters?: any) {
@@ -54,7 +54,10 @@ export function getCachedClient(platform?: any) {
   async function invalidate(prefix?: string) {
     if (!prefix) return
 
-    await cacheEngine.delete(prefix)
+    // Only attempt to invalidate cache in server environments
+    if (platform?.env?.KV) {
+      await platform.env.KV.delete(prefix)
+    }
   }
 
   return {

@@ -5,6 +5,7 @@ import Location from './location/location.svelte'
 import LocationList from './location-list/location-list.svelte'
 import Map from './map/map.svelte'
 import Paragraph from './paragraph/paragraph.svelte'
+import Seo from './seo/seo.svelte'
 import Training from './training/training.svelte'
 import TrainingComponent from './training-component/training-component.svelte'
 
@@ -16,6 +17,7 @@ export {
   LocationList,
   Map,
   Paragraph,
+  Seo,
   Training,
   TrainingComponent,
 }

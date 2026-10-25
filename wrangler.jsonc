@@ -28,7 +28,7 @@
     "CONTENT_CACHE_TTL": "86400000",
     "PUBLIC_SQUIDEX_ASSETS": "/api/assets/oxossi-malta/",
     "PUBLIC_SQUIDEX_ENVIRONMENT": "https://cloud.squidex.io",
-    "SITE_URL": "https://capoeiramalta.com",
+    "PUBLIC_HOST": "capoeiramalta.com",
     "SQUIDEX_APP_NAME": "oxossi-malta",
     "SQUIDEX_CLIENT_ID": "oxossi-malta:read-only"
   }

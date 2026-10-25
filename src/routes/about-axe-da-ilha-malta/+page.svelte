@@ -3,11 +3,16 @@
 
   import {
     Layout,
-  } from '$lib/layout/index'
+  } from '$lib/layout/index.js'
+
+  import {
+    Seo,
+  } from '$lib/component/index.js'
 
   let { data }: PageProps = $props();
 
-  const layout = data?.layout?.items?.[0]?.data?.content?.en
+  const layout = data?.layout?.items?.[0]?.data?.content?.en,
+    seo = data?.layout?.items?.[0]?.data?.content?.en
 
 </script>
 
@@ -21,4 +26,5 @@
   <meta name="keywords" content="Oxossi, Capoeira, Malta, Tartaruga, Ninja, about, who is" />
 </svelte:head>
 
+<Seo settings={seo} />
 <Layout {layout} />
