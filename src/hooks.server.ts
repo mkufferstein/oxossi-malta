@@ -19,7 +19,7 @@ const redirects = new Map<string, string>([
 export async function handle({ event, resolve }) {
   const forceWWW = (event.url.hostname === env.PUBLIC_HOST)
   const realHost = (forceWWW)
-    ? 'www' + event.url.hostname
+    ? 'www.' + event.url.hostname
     : event.url.hostname
   const target = redirects.get(event.url.pathname)
 
