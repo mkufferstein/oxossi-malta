@@ -1,4 +1,5 @@
 import AssetFolder from './assets-folder/assets-folder.svelte'
+import FaqList from './faq-list/faq-list.svelte'
 import HeroBanner from './hero/hero.svelte'
 import Highlights from './highlights/highlights.svelte'
 import Location from './location/location.svelte'
@@ -11,6 +12,7 @@ import TrainingComponent from './training-component/training-component.svelte'
 
 export {
   AssetFolder,
+  FaqList,
   HeroBanner,
   Highlights,
   Location,
@@ -21,5 +23,7 @@ export {
   Training,
   TrainingComponent,
 }
+
+export * from './seo/json-ld/index.js'
 
 export * from './types.js'

@@ -1,12 +1,14 @@
 <script lang="ts">
   import {
     COMPONENT_ASSET_FOLDER,
+    COMPONENT_FAQ_LIST,
     COMPONENT_HERO,
     COMPONENT_HIGHLIGHTS,
     COMPONENT_LOCATIONS,
     COMPONENT_PARAGRAPH,
     COMPONENT_TRAINING,
     AssetFolder,
+    FaqList,
     HeroBanner,
     Highlights,
     LocationList,
@@ -23,6 +25,9 @@
 {#each layout as component}
   {#if component?.schemaName === COMPONENT_ASSET_FOLDER}
     <AssetFolder imageBrowser={component} />
+  {/if}
+  {#if component?.schemaName === COMPONENT_FAQ_LIST}
+    <FaqList settings={component} faqData={passthrough?.faqData}/>
   {/if}
   {#if component?.schemaName === COMPONENT_HERO}
     <HeroBanner heroBanner={component} />

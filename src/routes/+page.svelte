@@ -6,6 +6,7 @@
   } from '$lib/layout/index'
 
   import {
+    organizationSchema,
     Seo,
    } from '$lib/component/index.js'
 
@@ -14,8 +15,9 @@
   let { data }: PageProps = $props();
 
   const layout = data?.layout?.items?.[0]?.data?.content?.en,
+    locationData = data?.locationData,
     seo = data?.layout?.items?.[0]?.data?.seo?.en
 </script>
 
-<Seo settings={seo} />
+<Seo schema={organizationSchema(locationData?.items)} settings={seo} />
 <Layout {layout} />
