@@ -2,12 +2,12 @@ import { env } from '$env/dynamic/public'
 
 import { locationSchema } from './location.js'
 
-const SITE_URL = `'https://www.${env.PUBLIC_HOST}`
+const SITE_URL = `https://www.${env.PUBLIC_HOST}`
 
 export function organizationSchema(locations) {
   return {
     '@type': 'SportsActivityLocation',
-    '@id': `'${SITE_URL}/#organization`,
+    '@id': `${SITE_URL}/#organization`,
     name: 'Axe da Ilha Capoeira Malta',
     url: SITE_URL,
     description:
@@ -20,7 +20,7 @@ export function organizationSchema(locations) {
       {
         '@type': 'Person',
         name: 'Tartaruga Ninja',
-        jobTitle: 'Monitor',
+        jobTitle: 'Instrutor',
         worksFor: { '@id': `${SITE_URL}/#organization` }
       },
       {
