@@ -7,19 +7,22 @@
 
   import {
     Seo,
+    faqPageSchema,
   } from '$lib/component/index.js'
 
   let { data }: PageProps = $props();
 
-  const layout = data?.layout?.items?.[0]?.data?.content?.en,
+  const faqData = data?.faqData,
+    layout = data?.layout?.items?.[0]?.data?.content?.en,
     seo = data?.layout?.items?.[0]?.data?.seo?.en,
     locationData = data?.locationData,
     training = data?.training,
     typeData = data?.typeData
 </script>
 
-<Seo settings={seo} />
-<Layout {layout}
+<Seo schema={faqPageSchema(faqData, layout)} settings={seo} />
+<Layout {faqData}
+  {layout}
   {locationData}
   {training}
   {typeData} />
