@@ -7,7 +7,7 @@ import {
 
 import { faqSchema } from './faq.js'
 
-const SITE_URL = `'https://www.${env.PUBLIC_HOST}`
+const SITE_URL = `https://www.${env.PUBLIC_HOST}`
 
 export function faqPageSchema(faqData, layout) {
 
@@ -29,7 +29,7 @@ export function faqPageSchema(faqData, layout) {
 
   return {
     "@type": "FAQPage",
-    "@id": `'${SITE_URL}${page?.url?.pathname || ''}#organization`,
+    "@id": `${SITE_URL}${page?.url?.pathname || ''}#organization`,
     "mainEntity": faqs?.map(faqSchema)
   }
 }

@@ -1,6 +1,6 @@
 import { env } from '$env/dynamic/public'
 
-const SITE_URL = `'https://www.${env.PUBLIC_HOST}`
+const SITE_URL = `https://www.${env.PUBLIC_HOST}`
 
 export function locationSchema(locationData) {
   const {
