@@ -9,8 +9,7 @@
     typeData,
   } = $props()
 
-  const types = ['b129007a-10fe-43aa-9247-bea2b6058dd2', '001b0b32-24c3-4ad3-aca4-f196cfe1e7e0']
-  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday']
+  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
   let locationsMapped = {},
     byDay: {[key: string] : []} = {},
@@ -27,14 +26,17 @@
   })
 
   training.map(currentTraining =>  {
-    const day = currentTraining?.data?.repeatsOn?.iv
+
+    const day = currentTraining?.data?.repeatsOn?.iv ?? days[(new Date(currentTraining?.data?.date?.iv).getDay() + 6) % 7]
     const location = currentTraining?.data?.location?.iv
     const type = currentTraining?.data?.type?.iv
 
-    const trainigData : {} = {
+    const trainingData : {} = {
+      date: !currentTraining?.data?.repeatsOn?.iv && currentTraining?.data?.date?.iv && new Date(currentTraining?.data?.date?.iv),
       location: locationsMapped[location],
       startOrder: 1500,
       time: `${currentTraining?.data?.startTime?.iv} - ${currentTraining?.data?.endTime?.iv}`,
+      title: !currentTraining?.data?.repeatsOn?.iv && currentTraining?.data?.title?.iv,
       type: typesMapped[type]?.data?.title?.en,
       typeDescription: typesMapped[type]?.data?.description?.en
     }
@@ -46,18 +48,20 @@
       hour += (ap.toLowerCase() === 'pm')
         ? 12
         : 0
-      trainigData.startOrder = hour * 60 + +m
+      trainingData.startOrder = hour * 60 + +m
     } else {
-      trainigData.startOrder = +h * 60 + +m
+      trainingData.startOrder = +h * 60 + +m
     }
 
     if (!byDay[day]) {
       byDay[day] = []
     }
-    byDay[day].push(trainigData)
+    byDay[day].push(trainingData)
 
     byDay[day].sort((a, b) => a.startOrder - b.startOrder)
   })
+
+  // $inspect(byDay)
 </script>
 <div class="trainingContainer">
   {#each days as day}

@@ -9,6 +9,8 @@
     DayCard,
   } from './types'
 
+  const formatter = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short' })
+
   const {
     day,
     trainings,
@@ -21,12 +23,20 @@
     modal.properties = {location: trainings[key]?.location}
   }
 
+// $inspect(trainings)
+
 </script>
 
 <div class="dayCard">
   <h2>{day}</h2>
   {#each trainings as training, index}
     <div class="trainingSession">
+      {#if training?.date}
+        <span class="trainingDate">{formatter.format(training?.date)}</span>
+      {/if}
+      {#if training?.title}
+        <span class="trainingTitle">{training?.title}</span>
+      {/if}
       <span class="trainingType {training.type?.toLowerCase()}">{training.type}</span>
       <span class="trainingTime">{training.time}</span>
       <div 
@@ -37,9 +47,6 @@
         role="button"
         tabindex="0"
         >{training.location?.data?.name?.iv}</div>
-      {#if training?.title}
-        <p class="trainigTitle">{training?.title}</p>
-      {/if}
       {#if training?.description}
         <p class="trainigDescription">{training?.description}</p>
       {/if}

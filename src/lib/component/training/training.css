@@ -28,17 +28,30 @@
 }
 
 .dayCard > h2 {
-  color                     : var(--accent-color);
+  color                     : var(--dark-secondary-color);
   font-family               : 'Bebas Neue', sans-serif;
   font-size                 : 2rem;
 }
 
 .trainingSession {
   border-top                : .0625rem solid rgba(var(--dark-text-rgb), 0.08);
+  padding                   : 0 0 .5rem;
 }
 
 .trainingSession > p {
   padding                   : .25rem 1.5rem;
+}
+
+.trainingDate {
+  display                   : block;
+  font-family               : 'Bebas Neue', sans-serif;
+  font-size                 : 1.25rem;
+}
+
+.trainingTitle {
+  display                   : block;
+  font-size                 : 1.15rem;
+  font-weight               : bold;
 }
 
 .trainingType {
@@ -53,6 +66,16 @@
 .trainingType.adults {
   background-color          : var(--secondary-color);
   color                     : var(--light-text);
+}
+
+.trainingType.workshop {
+  background-color          : var(--light-accent-color);
+  color                     : var(--accent-color);
+}
+
+.trainingType.festival {
+  background-color          : var(--accent-color);
+  color                     : var(--light-accent-color);
 }
 
 .trainingTime {

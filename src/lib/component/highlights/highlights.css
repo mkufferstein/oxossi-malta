@@ -1,6 +1,6 @@
 
 .highlights {
-  background-color          : var(--accent-color);
+  background-color          : var(--dark-secondary-color);
   padding                   : 1.5rem 0 0;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .highlight {
-  background-color          : var(--light-accent-color);
+  background-color          : var(--light-secondary-color);
   border-radius             : 0 0 .75rem .75rem;
   color                     : var(--light-text);
   margin                    : 0 0 1rem;

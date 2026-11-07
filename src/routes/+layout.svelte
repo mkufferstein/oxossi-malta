@@ -14,6 +14,7 @@
   let { children, data } = $props();
 
   const {
+    notices,
     social
   } = data
 
@@ -23,7 +24,8 @@
     const classList = ['hamburger']
     classList.push((isMenuOpen) ? 'iconoir-xmark' : 'iconoir-menu')
     return classList
-  })
+  }),
+    headerNotices = $derived(notices?.items?.filter(notice => notice?.data?.isVisibleInHeader?.iv))
 
   const toggleMenu = () => {
     isMenuOpen = !isMenuOpen
@@ -38,6 +40,8 @@
       isMenuOpen = false
     }
   })
+
+  $inspect('HN', headerNotices)
 </script>
 
 <svelte:head>
@@ -67,6 +71,11 @@
         <a href="/capoeira-classes-malta#training" class="secondary">Schedule</a>
         <span class={classList.join(' ')} onclick={toggleMenu}></span>
     </div>
+    {#if headerNotices}
+      {#each headerNotices as notice}
+        {notice?.data?.title?.iv}
+      {/each}
+    {/if}
 </nav>
 
 <!-- Main Content -->

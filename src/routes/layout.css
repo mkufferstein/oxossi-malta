@@ -1,8 +1,10 @@
 :root {
   --primary-color           : #FFD700;
   --secondary-color         : #388E3C;
-  --accent-color            : #144700;
-  --light-accent-color      : #237803;
+  --dark-secondary-color    : #144700;
+  --light-secondary-color   : #237803;
+  --accent-color            : #0D47A1;
+  --light-accent-color      : #BBDEFB;
   /* --accent-color            : #5d4037;
   --light-accent-color      : #795d42; */
   --dark-bg                 : #121212;
@@ -12,6 +14,8 @@
   --dark-text               : #121212;
   --dark-text-rgb           : 18, 18, 18;
   --light-text              : #FFFBEF;
+  --error                   : #C62828;
+  --error-light             : #FDECEA;
 }
 
 /* Reset and Base Styles */
@@ -53,6 +57,7 @@ h1 {
 /* Navigation */
 .navbar {
   background-color          : var(--light-bg);
+  border-bottom             : .25rem solid var(--accent-color);
   padding                   : 1rem 0;
   position                  : fixed;
   top                       : 0;
@@ -237,6 +242,7 @@ a.secondary, a.secondary:visited {
   }
 
   .navbar {
+    border-bottom-color       : transparent;
     position                  : absolute;
   }
 

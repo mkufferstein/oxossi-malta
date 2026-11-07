@@ -10,6 +10,8 @@
     faqPageSchema,
   } from '$lib/component/index.js'
 
+  import './page.css'
+
   let { data }: PageProps = $props();
 
   const faqData = data?.faqData,
