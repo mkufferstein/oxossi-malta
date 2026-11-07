@@ -169,7 +169,7 @@ a.secondary, a.secondary:visited {
 
 /* Main Content */
 .main {
-  margin                    : 3.75rem 0 0;
+  margin                    : 4.75rem 0 0;
   min-height                : 80%;
   padding                   : 2.25rem 0;
 }
@@ -234,6 +234,50 @@ a.secondary, a.secondary:visited {
   margin                    : 0 .25rem;
   padding                   : .5rem;
   z-index                   : 25;
+}
+
+/* Notice Slider */
+.notice-slider {
+  background-color          : var(--light-accent-color);
+  border-bottom             : .25rem solid var(--accent-color);
+  overflow                  : hidden;
+  padding                   : 0 0 .5rem;
+  position                  : relative;
+  text-align                : center;
+  user-select               : none; /* Prevents text selection during swipe */
+}
+
+.notice-content {
+  font-size                 : 1.25rem;
+  font-weight               : bold;
+  margin-bottom             : .5rem;
+  min-height                : 1.25rem; /* Ensures consistent height */
+  transition                : opacity 0.3s ease; /* Smooth transition for content changes */
+}
+
+.notice-dots {
+  display                   : flex;
+  gap                       : 0.5rem;
+  justify-content           : center;
+}
+
+.dot {
+  background-color          : var(--accent-color);
+  border-radius             : 50%;
+  cursor                    : pointer;
+  height                    : .5rem;
+  opacity                   : .5;
+  transition                : background-color 0.3s ease;
+  width                     : .5rem;
+}
+
+.dot.active {
+  opacity                   : 1;
+}
+
+/* Add visual feedback for swipe actions */
+.notice-slider:active {
+  cursor                    : grabbing;
 }
 
 @media (min-width: 768px) {

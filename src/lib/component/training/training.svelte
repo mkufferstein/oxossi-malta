@@ -5,6 +5,7 @@
 
   const {
     locationData,
+    noticeData,
     training,
     typeData,
   } = $props()

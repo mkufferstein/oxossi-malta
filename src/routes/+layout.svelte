@@ -18,14 +18,18 @@
     social
   } = data
 
-  let isMenuOpen: boolean = $state(false)
+  let isMenuOpen: boolean = $state(false),
+    currentNoticeIndex: number = $state(0),
+    interval: Timeout = $state(0),
+    startX: number = 0,
+    endX: number = 0
 
   let classList : string[] = $derived.by(() => {
     const classList = ['hamburger']
     classList.push((isMenuOpen) ? 'iconoir-xmark' : 'iconoir-menu')
     return classList
   }),
-    headerNotices = $derived(notices?.items?.filter(notice => notice?.data?.isVisibleInHeader?.iv))
+    headerNotices = $derived(notices?.items?.filter((notice: any) => notice?.data?.isVisibleInHeader?.iv))
 
   const toggleMenu = () => {
     isMenuOpen = !isMenuOpen
@@ -34,6 +38,81 @@
   const closeModal = () => {
     modal.clear()
   }
+
+  const navigateNotice = (direction: number) => {
+    if (!headerNotices || headerNotices.length <= 1) return;
+    
+    if (direction === 1) {
+      // Next notice
+      currentNoticeIndex = (currentNoticeIndex + 1) % headerNotices.length;
+    } else {
+      // Previous notice
+      currentNoticeIndex = (currentNoticeIndex - 1 + headerNotices.length) % headerNotices.length;
+    }
+  }
+
+  // Handle swipe gestures
+  const handleTouchStart = (e: TouchEvent) => {
+    startX = e.touches[0].clientX;
+  }
+
+  const handleTouchMove = (e: TouchEvent) => {
+    endX = e.touches[0].clientX;
+  }
+
+  const handleTouchEnd = () => {
+    if (!headerNotices || headerNotices.length <= 1) return;
+    
+    const swipeThreshold = 50; // Minimum swipe distance in pixels
+    const diff = startX - endX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        // Swipe left - next notice
+        navigateNotice(1);
+      } else {
+        // Swipe right - previous notice
+        navigateNotice(-1);
+      }
+    }
+  }
+
+  // Handle mouse events for desktop swipe simulation
+  const handleMouseDown = (e: MouseEvent) => {
+    startX = e.clientX;
+  }
+
+  const handleMouseMove = (e: MouseEvent) => {
+    endX = e.clientX;
+  }
+
+  const handleMouseUp = () => {
+    if (!headerNotices || headerNotices.length <= 1) return;
+    
+    const swipeThreshold = 50; // Minimum swipe distance in pixels
+    const diff = startX - endX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        // Swipe left - next notice
+        navigateNotice(1);
+      } else {
+        // Swipe right - previous notice
+        navigateNotice(-1);
+      }
+    }
+  }
+
+  // Auto-rotate notices every 5 seconds
+  $effect(() => {
+    if (!headerNotices || headerNotices.length <= 1) return;
+    
+    interval = setInterval(() => {
+      currentNoticeIndex = (currentNoticeIndex + 1) % headerNotices.length;
+    }, 5000);
+    
+    return () => clearInterval(interval);
+  })
 
   $effect(() => {
     if ($page.url.pathname) {
@@ -71,15 +150,35 @@
         <a href="/capoeira-classes-malta#training" class="secondary">Schedule</a>
         <span class={classList.join(' ')} onclick={toggleMenu}></span>
     </div>
-    {#if headerNotices}
-      {#each headerNotices as notice}
-        {notice?.data?.title?.iv}
-      {/each}
-    {/if}
 </nav>
 
 <!-- Main Content -->
 <main class="main">
+  {#if headerNotices && headerNotices.length > 0}
+    <div 
+      class="notice-slider"
+      ontouchstart={handleTouchStart}
+      ontouchmove={handleTouchMove}
+      ontouchend={handleTouchEnd}
+      onmousedown={handleMouseDown}
+      onmousemove={handleMouseMove}
+      onmouseup={handleMouseUp}
+      onmouseleave={handleMouseUp}
+    >
+      <div class="notice-content">
+        {headerNotices[currentNoticeIndex]?.data?.title?.iv}
+      </div>
+      {#if headerNotices.length > 1}
+        <div class="notice-dots">
+          {#each headerNotices as _, index}
+            <span class="dot {index === currentNoticeIndex ? 'active' : ''}" 
+                  onclick={() => currentNoticeIndex = index}></span>
+          {/each}
+        </div>
+
+      {/if}
+    </div>
+  {/if}
   {@render children?.()}
 </main>
 
@@ -104,7 +203,7 @@
     <div id="modalControl">
       <span class="modal-spacer"></span>
       {#each modal?.controls as control}
-        <div class={control.class + " modal-control"} onclick={control.callback}></div>
+        <div class={control.class + " modal-control"} onclick={control.callback as () => void}></div>
       {/each}
       <span class="modal-spacer"></span>
       <div class="iconoir-xmark modal-control" onclick={closeModal}></div>
