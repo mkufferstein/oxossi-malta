@@ -9,9 +9,12 @@
     DayCard,
   } from './types'
 
+  const formatter = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short' })
+
   const {
     day,
     trainings,
+    notices,
   } : DayCard = $props()
 
   const showLocationModal = (e: Event) => {
@@ -21,12 +24,31 @@
     modal.properties = {location: trainings[key]?.location}
   }
 
+  // $inspect(trainings)
+
 </script>
 
 <div class="dayCard">
   <h2>{day}</h2>
+  {#if notices && notices.length > 0}
+    <div class="notices-container">
+      {#each notices as notice}
+        <div class="notice">
+          <span class="notice-text">{notice?.data?.text?.iv}</span>
+        </div>
+      {/each}
+    </div>
+  {/if}
   {#each trainings as training, index}
-    <div class="trainingSession">
+    <div class="trainingSession"
+      class:changed={training.isChanged}
+      class:cancelled={training.isCancelled} >
+      {#if training?.date}
+        <span class="trainingDate">{formatter.format(training?.date)}</span>
+      {/if}
+      {#if training?.title}
+        <span class="trainingTitle">{training?.title}</span>
+      {/if}
       <span class="trainingType {training.type?.toLowerCase()}">{training.type}</span>
       <span class="trainingTime">{training.time}</span>
       <div 
@@ -37,11 +59,8 @@
         role="button"
         tabindex="0"
         >{training.location?.data?.name?.iv}</div>
-      {#if training?.title}
-        <p class="trainigTitle">{training?.title}</p>
-      {/if}
       {#if training?.description}
-        <p class="trainigDescription">{training?.description}</p>
+        <p class="trainingDescription">{training?.description}</p>
       {/if}
     </div>
   {/each}

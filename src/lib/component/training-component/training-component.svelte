@@ -4,6 +4,7 @@
   const {
     settings,
     locationData,
+    noticeData,
     training,
     typeData,
   } = $props()
@@ -15,7 +16,10 @@
       <h1>{settings.title}</h1>
     {/if}
     {@html settings?.description}
-    <Training locationData={locationData?.items} training={training?.items} typeData={typeData?.items} />
+    <Training locationData={locationData?.items}
+      noticeData={noticeData?.items}
+      training={training?.items}
+      typeData={typeData?.items} />
     {#if settings?.cta}
       <a href="{settings?.cta?.link}" class="secondary">{settings?.cta?.text}</a>
     {/if}

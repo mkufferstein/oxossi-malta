@@ -7,8 +7,46 @@ import type { PageServerLoad } from './$types';
 export const load: PageServerLoad = async ({ platform }) => {
   const cachedClient = getCachedClient(platform)
 
+  const currentDate = new Date()
+  const endDate = new Date(),
+    startDate = new Date()
+
+  startDate.setDate(currentDate.getDate() - 1 )
+  endDate.setDate(currentDate.getDate() + 14 )
+
   const price = await cachedClient.getContents('price', {  }),
-    training = await cachedClient.getContents('training', {  }),
+    notices = await cachedClient.getContents(
+      'notice',
+      {
+        $filter: {
+          and: [
+            { or: [
+              { path: "data.displayFrom.iv", op: "ge", value: startDate.toISOString().slice(0, 10) + "T00:00:00Z" },
+              { path: "data.displayFrom.iv", op: "ne", value: null },
+            ]},
+            { or: [
+              { path: "data.displayUntil.iv", op: "ne", value: null },
+              { path: "data.displayUntil.iv", op: "le", value: endDate.toISOString().slice(0, 10) + "T00:00:00Z" }
+            ]}
+          ]
+        },
+        $orderby: 'data/displayUntil/iv asc'
+      }
+    ),
+    training = await cachedClient.getContents(
+      'training',
+      {
+        $filter: {
+          or: [
+            { path: "data.repeatsOn.iv", op: "ne", value: null },
+            { and: [
+              { path: "data.date.iv", op: "ge", value: startDate.toISOString().slice(0, 10) + "T00:00:00Z" },
+              { path: "data.date.iv", op: "le", value: endDate.toISOString().slice(0, 10) + "T00:00:00Z" }
+            ]}
+          ]
+        },
+      }
+    ),
     faqData = await cachedClient.getContents('faq', {  })
 
   let locationData,
@@ -39,6 +77,7 @@ export const load: PageServerLoad = async ({ platform }) => {
   return {
     faqData,
     locationData,
+    notices,
     price,
     social: await cachedClient.getContents('social', { $orderby: 'data/order/iv' }),
     training,

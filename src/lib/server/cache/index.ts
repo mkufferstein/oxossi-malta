@@ -29,8 +29,8 @@ export function getCachedClient(platform?: any) {
     }
   }
 
-  async function getContents(schema: string, requestParameters?: any) {
-    const cacheKey = schema
+  async function getContents(cacheKey: string, requestParameters?: any) {
+    const schema = requestParameters?.schema ?? cacheKey
     let result = await get(cacheKey)
     if (result !== null) {
       return result

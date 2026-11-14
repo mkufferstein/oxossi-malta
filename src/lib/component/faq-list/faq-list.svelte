@@ -12,8 +12,7 @@
     )
   )
 
-$inspect(activeFaqs)
-
+// $inspect(activeFaqs)
 </script>
 
 <div class="{settings?.theme?.theme}">
