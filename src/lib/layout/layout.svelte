@@ -44,6 +44,7 @@
   {/if}
   {#if component?.schemaName === COMPONENT_TRAINING}
     <TrainingComponent settings={component}
+      daysData={passthrough?.daysData}
       locationData={passthrough?.locationData} 
       noticeData={passthrough?.noticeData} 
       trainingData={passthrough?.trainingData} 

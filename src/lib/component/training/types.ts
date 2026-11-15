@@ -4,6 +4,21 @@ export interface DayCard {
   notices?: any[];
 }
 
+export interface DayRawData {
+  id: string;
+  data: {
+    name?: { [key: string]: string };
+    order?: { iv: Number };
+  };
+}
+
+export interface LocationRawData {
+  id: string;
+  data: {
+    name?: { iv: string };
+  };
+}
+
 export interface NoticeRawData {
   data: {
     isCancelled?: {iv: boolean};
@@ -14,13 +29,6 @@ export interface NoticeRawData {
     trainings?: { iv: string[] };
     validFrom?: { iv: string };
     validUntil?: { iv: string };
-  };
-}
-
-export interface LocationRawData {
-  id: string;
-  data: {
-    name?: { iv: string };
   };
 }
 
@@ -39,21 +47,21 @@ export interface Training {
 
 export interface TrainingRawData {
   data: {
-    repeatsOn?: { iv: string };
+    repeatsOn?: { iv: string[] };
     date?: { iv: string };
-    location?: { iv: string };
-    type?: { iv: string };
-    startTime?: { iv: string };
-    endTime?: { iv: string };
-    title?: { iv: string };
+    location?: { iv: string[] };
+    type?: { iv: string[] };
+    startTime?: { [key: string]: string };
+    endTime?: { [key: string]: string };
+    title?: { [key: string]: string };
   };
   id: string;
 }
 
 export interface TypeRawData {
   data: {
-    title?: { en: string };
-    description?: { en: string };
+    title?: { [key: string]: string };
+    description?: { [key: string]: string };
   };
   id: string;
 }

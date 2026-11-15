@@ -1,40 +1,49 @@
 <script lang="ts">
-  import './training.css'
+  import {
+    locale,
+  } from '$lib/locale/index.js'
 
   import DayCard from './day-card.svelte'
 
   import type {
+    DayRawData,
     LocationRawData,
     NoticeRawData,
     Training,
     TrainingRawData,
     TypeRawData,
   } from './types.js'
+  
+  import './training.css'
 
   const {
+    daysData,
     locationData,
     noticeData,
     trainingData,
     typeData,
   } = $props()
 
-  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+  const days = $derived(daysData.map(day => day?.data?.name?.[locale.get()]))
 
-  // Process locations into a map
+  const processDays = (aggregator: {[key: string] : DayRawData}, currentDay: DayRawData) => {
+    const id = currentDay?.id
+    aggregator[id] = currentDay
+    return aggregator
+  }
+
   const processLocations = (aggregator: {[key: string] : LocationRawData}, currentLocation: LocationRawData) => {
     const id = currentLocation?.id
     aggregator[id] = currentLocation
     return aggregator
   }
 
-  // Process types into a map
   const processTypes = (aggregator: {[key: string] : TypeRawData}, currentType: TypeRawData) => {
     const id = currentType?.id
     aggregator[id] = currentType
     return aggregator
   }
 
-  // Process notices to match them with training days
   const processTrainingNotices = (aggregator: {[key: string] : NoticeRawData[]}, currentNotice: NoticeRawData) => {
     if (currentNotice?.data?.trainings?.iv && currentNotice?.data?.trainings?.iv.length > 0) {
       currentNotice.data.trainings.iv.forEach(trainingId => {
@@ -108,21 +117,23 @@
     const sevenDaysFromNow = new Date()
     sevenDaysFromNow.setDate(currentDate.getDate() + 7)
 
+console.log('CT', currentTraining)
+
     // Handle potential undefined values
     const dateValue = currentTraining?.data?.date?.iv,
-      repeatsOnValue = currentTraining?.data?.repeatsOn?.iv,
+      repeatsOnValue = currentTraining?.data?.repeatsOn?.iv?.[0],
       locationValue : string = currentTraining?.data?.location?.iv?.[0] ?? '',
       typeValue = currentTraining?.data?.type?.iv,
-      startTimeValue = currentTraining?.data?.startTime?.iv,
-      endTimeValue = currentTraining?.data?.endTime?.iv,
-      titleValue = currentTraining?.data?.title?.iv
+      startTimeValue = currentTraining?.data?.startTime?.[locale.get()],
+      endTimeValue = currentTraining?.data?.endTime?.[locale.get()],
+      titleValue = currentTraining?.data?.title?.[locale.get()]
     
     // Ensure dateValue is valid before creating Date object
     let day = '';
     let trainingDate: Date | undefined = undefined;
     
     if (repeatsOnValue) {
-      day = repeatsOnValue;
+      day = daysMapped[repeatsOnValue]?.data?.name?.[locale.get()]
     } else if (dateValue) {
       const date = new Date(dateValue);
       if (!isNaN(date.getTime())) {
@@ -135,8 +146,8 @@
       day = 'Incorrect'
     }
     
-    const typeName = typeValue ? typesMapped[typeValue]?.data?.title?.en : undefined,
-      typeDescription = typeValue ? typesMapped[typeValue]?.data?.description?.en : undefined
+    const typeName = typeValue ? typesMapped[typeValue]?.data?.title?.[locale.get()] : undefined,
+      typeDescription = typeValue ? typesMapped[typeValue]?.data?.description?.[locale.get()] : undefined
     
     const currentTrainingData: Training = {
       date: trainingDate,
@@ -148,7 +159,6 @@
       type: typeName || '',
       typeDescription: typeDescription
     }
-
     // Process notices for this training
     const noticesForTraining = trainingNotices?.[trainingData.id] || [];
     
@@ -212,8 +222,9 @@
     return aggregator
   }
 
-  let trainingNotices: { [key: string]: NoticeRawData[] } = $derived(noticeData.reduce(processTrainingNotices, {})),
+  let daysMapped: { [key: string]: DayRawData } = $derived(daysData.reduce(processDays,{})),
     locationsMapped: { [key: string]: LocationRawData } = $derived(locationData.reduce(processLocations,{})),
+    trainingNotices: { [key: string]: NoticeRawData[] } = $derived(noticeData.reduce(processTrainingNotices, {})),
     typesMapped: { [key: string]: TypeRawData } = $derived(typeData.reduce(processTypes, {}))
 
   let byDay: { [key: string]: Training[] } = $derived(trainingData.reduce(processTrainings, {})),

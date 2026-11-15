@@ -2,9 +2,10 @@
   import Training from '../training/training.svelte'
 
   const {
-    settings,
+    daysData,
     locationData,
     noticeData,
+    settings,
     trainingData,
     typeData,
   } = $props()
@@ -16,10 +17,11 @@
       <h1>{settings.title}</h1>
     {/if}
     {@html settings?.description}
-    <Training locationData={locationData}
-      noticeData={noticeData}
-      trainingData={trainingData}
-      typeData={typeData} />
+    <Training {daysData}
+      {locationData}
+      {noticeData}
+      {trainingData}
+      {typeData} />
     {#if settings?.cta}
       <a href="{settings?.cta?.link}" class="secondary">{settings?.cta?.text}</a>
     {/if}
