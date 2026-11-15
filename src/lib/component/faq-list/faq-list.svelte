@@ -1,6 +1,10 @@
 <script lang="ts">
   import './faq-list.css'
 
+  import {
+    locale,
+  } from '$lib/locale/index.js'
+
   const {
     faqData,
     settings,
@@ -24,12 +28,12 @@
     {#each activeFaqs as f}
       <details>
         <summary>
-          <h2>{f?.data?.question?.en}</h2>
+          <h2>{f?.data?.question?.[locale.get()]}</h2>
           <span class="toggle">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
           </span>
         </summary>
-        <p>{@html f?.data?.answer?.en}</p>
+        <p>{@html f?.data?.answer?.[locale.get()]}</p>
       </details>
     {/each}
     {#if settings?.cta}

@@ -2,17 +2,21 @@
   import type { PageProps } from './$types'
 
   import {
+    Seo,
+  } from '$lib/component/index.js'
+
+  import {
     Layout,
   } from '$lib/layout/index.js'
 
   import {
-    Seo,
-  } from '$lib/component/index.js'
+    locale,
+  } from '$lib/locale/index.js'
 
   let { data }: PageProps = $props();
 
-  const layout = data?.layout?.[0]?.data?.content?.en,
-    seo = data?.layout?.[0]?.data?.content?.en
+  const layout = data?.layout?.[0]?.data?.content?.[locale.get()],
+    seo = data?.layout?.[0]?.data?.content?.[locale.get()]
 
 </script>
 

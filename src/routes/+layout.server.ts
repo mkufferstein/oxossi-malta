@@ -13,7 +13,8 @@ export const load: PageServerLoad = async ({ platform }) => {
   startDate.setDate(currentDate.getDate() - 1 )
   endDate.setDate(currentDate.getDate() + 14 )
 
-  const price = await cachedClient.getContents('price', {  }),
+  const daysData = await cachedClient.getContents('days', { $orderby: 'data/order/iv asc' }),
+    priceData = await cachedClient.getContents('price', {  }),
     noticeData = await cachedClient.getContents(
       'notice',
       {
@@ -53,8 +54,6 @@ export const load: PageServerLoad = async ({ platform }) => {
     typeData,
     types: string[] = []
 
-console.log(trainingData)
-
   trainingData?.map(trainingPiece => {
     // const locationId = trainingPiece?.data?.location?.iv?.[0]
     // if (locations.indexOf(locationId) === -1) {
@@ -76,10 +75,11 @@ console.log(trainingData)
   }
 
   return {
+    daysData,
     faqData,
     locationData,
     noticeData,
-    price,
+    priceData,
     socialData: await cachedClient.getContents('social', { $orderby: 'data/order/iv' }),
     trainingData,
     typeData,

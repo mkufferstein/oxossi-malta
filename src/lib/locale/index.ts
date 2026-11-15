@@ -1,0 +1,1 @@
+export { locale } from './locale.svelte.js'

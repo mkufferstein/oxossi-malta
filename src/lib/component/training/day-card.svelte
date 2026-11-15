@@ -1,5 +1,9 @@
 <script lang="ts">
   import {
+    locale,
+  } from '$lib/locale/index.js'
+
+  import {
     modal,
   } from '$lib/modal/index.js'
 
@@ -36,7 +40,7 @@
     <div class="notices-container">
       {#each notices as notice}
         <div class="notice">
-          <span class="notice-text">{notice?.data?.text?.iv}</span>
+          <span class="notice-text">{notice?.data?.title?.[locale.get()]}</span>
         </div>
       {/each}
     </div>
@@ -60,7 +64,7 @@
         onkeyup={showLocationModal}
         role="button"
         tabindex="0"
-        >{training?.location?.data?.name?.iv}</div>
+        >{training?.location?.data?.name?.[locale.get()]}</div>
       <!-- {#if training?.description}
         <p class="trainingDescription">{training?.description}</p>
       {/if} -->

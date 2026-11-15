@@ -1,4 +1,8 @@
 <script lang="ts">
+  import {
+    locale,
+  } from '$lib/locale/index.js'
+
   import Map from '../map/map.svelte'
 
   import './location.css'
@@ -7,12 +11,12 @@
     location,
   } = $props()
 
-  const address = location?.data?.address?.iv,
-    city = location?.data?.city?.iv,
-    country = location?.data?.country?.iv,
+  const address = location?.data?.address?.[locale.get()],
+    city = location?.data?.city?.[locale.get()],
+    country = location?.data?.country?.[locale.get()],
     lat = location?.data?.location?.iv?.latitude,
     lng = location?.data?.location?.iv?.longitude,
-    name = location?.data?.name?.iv
+    name = location?.data?.name?.[locale.get()]
 
 </script>
 <div class="locationContainer">

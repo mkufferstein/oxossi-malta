@@ -1,3 +1,7 @@
+import {
+  locale,
+} from '$lib/locale/index.js'
+
 export function faqSchema(faq) {
   const {
     question,
@@ -6,10 +10,10 @@ export function faqSchema(faq) {
 
   return {
     "@type": "Question",
-    "name": question?.en,
+    "name": question?.[locale.get()],
     "acceptedAnswer": {
       "@type": "Answer",
-      "text": answer?.en
+      "text": answer?.[locale.get()]
     }
   }
 }

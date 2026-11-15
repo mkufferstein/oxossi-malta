@@ -8,6 +8,10 @@
   } from '$lib/layout/index'
 
   import {
+    locale,
+  } from '$lib/locale/index.js'
+
+  import {
     COMPONENT_HERO,
     COMPONENT_HIGHLIGHTS,
    } from '$lib/component/index.js'
@@ -16,7 +20,7 @@
 
   let { data }: PageProps = $props();
 
-  const layout = data?.layout?.[0]?.data?.content?.en
+  const layout = data?.layout?.[0]?.data?.content?.[locale.get()]
 
 </script>
 

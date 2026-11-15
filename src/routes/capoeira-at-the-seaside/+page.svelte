@@ -4,19 +4,23 @@
   import { env } from '$env/dynamic/public'
 
   import {
+    COMPONENT_HERO,
+    COMPONENT_HIGHLIGHTS,
+   } from '$lib/component/index.js'
+
+  import {
     Layout,
   } from '$lib/layout/index'
 
   import {
-    COMPONENT_HERO,
-    COMPONENT_HIGHLIGHTS,
-   } from '$lib/component/index.js'
+    locale,
+  } from '$lib/locale/index.js'
 
   import './page.css'
 
   let { data }: PageProps = $props();
 
-  const layout = data?.layout?.[0]?.data?.content?.en
+  const layout = data?.layout?.[0]?.data?.content?.[locale.get()]
 
   let heroBanner = layout.find(c => c.schemaName === COMPONENT_HERO),
     highlights = layout.find(c => c.schemaName === COMPONENT_HIGHLIGHTS)
