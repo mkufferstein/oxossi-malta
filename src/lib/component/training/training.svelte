@@ -117,8 +117,6 @@
     const sevenDaysFromNow = new Date()
     sevenDaysFromNow.setDate(currentDate.getDate() + 7)
 
-console.log('CT', currentTraining)
-
     // Handle potential undefined values
     const dateValue = currentTraining?.data?.date?.iv,
       repeatsOnValue = currentTraining?.data?.repeatsOn?.iv?.[0],
