@@ -14,10 +14,10 @@
 
   let { data }: PageProps = $props();
 
-  const layout = data?.layout?.items?.[0]?.data?.content?.en,
+  const layout = data?.layout?.[0]?.data?.content?.en,
     locationData = data?.locationData,
-    seo = data?.layout?.items?.[0]?.data?.seo?.en
+    seo = data?.layout?.[0]?.data?.seo?.en
 </script>
 
-<Seo schema={organizationSchema(locationData?.items)} settings={seo} />
+<Seo schema={organizationSchema(locationData)} settings={seo} />
 <Layout {layout} />

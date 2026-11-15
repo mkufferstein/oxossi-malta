@@ -20,8 +20,10 @@
   const showLocationModal = (e: Event) => {
     const target = e.currentTarget as HTMLElement
     const key = target.dataset.key
-    modal.component = Location
-    modal.properties = {location: trainings[key]?.location}
+    if (trainings && key) {
+      modal.component = Location
+      modal.properties = {location: trainings[Number(key)]?.location}
+    }
   }
 
   // $inspect(trainings)
@@ -58,10 +60,10 @@
         onkeyup={showLocationModal}
         role="button"
         tabindex="0"
-        >{training.location?.data?.name?.iv}</div>
-      {#if training?.description}
+        >{training?.location?.data?.name?.iv}</div>
+      <!-- {#if training?.description}
         <p class="trainingDescription">{training?.description}</p>
-      {/if}
+      {/if} -->
     </div>
   {/each}
 </div>

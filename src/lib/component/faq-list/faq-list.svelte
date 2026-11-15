@@ -8,7 +8,7 @@
 
   let activeFaqs = $derived(settings?.faqs.map(
     (faq: string) =>
-      faqData?.items.find(currentFaq => currentFaq.id === faq )
+      faqData?.find(currentFaq => currentFaq.id === faq )
     )
   )
 

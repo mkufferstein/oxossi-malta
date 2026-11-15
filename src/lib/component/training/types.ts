@@ -29,7 +29,7 @@ export interface Training {
   id: string;
   isCancelled?: boolean;
   isChanged?: boolean;
-  location: string;
+  location: {data : any};
   startOrder: number;
   time: string;
   title?: string;

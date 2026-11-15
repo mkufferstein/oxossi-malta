@@ -46,7 +46,7 @@
     <TrainingComponent settings={component}
       locationData={passthrough?.locationData} 
       noticeData={passthrough?.noticeData} 
-      training={passthrough?.training} 
+      trainingData={passthrough?.trainingData} 
       typeData={passthrough?.typeData} />
   {/if}
 {/each}

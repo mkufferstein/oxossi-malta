@@ -1,6 +1,5 @@
 import { 
   getCachedClient,
-  getClient,
 } from '$lib/server/index.js';
 import type { PageServerLoad } from './$types';
 
@@ -15,7 +14,7 @@ export const load: PageServerLoad = async ({ platform }) => {
   endDate.setDate(currentDate.getDate() + 14 )
 
   const price = await cachedClient.getContents('price', {  }),
-    notices = await cachedClient.getContents(
+    noticeData = await cachedClient.getContents(
       'notice',
       {
         $filter: {
@@ -33,7 +32,7 @@ export const load: PageServerLoad = async ({ platform }) => {
         $orderby: 'data/displayUntil/iv asc'
       }
     ),
-    training = await cachedClient.getContents(
+    trainingData = await cachedClient.getContents(
       'training',
       {
         $filter: {
@@ -50,15 +49,15 @@ export const load: PageServerLoad = async ({ platform }) => {
     faqData = await cachedClient.getContents('faq', {  })
 
   let locationData,
-    locations: string[] = [],
+    // locations: string[] = [],
     typeData,
     types: string[] = []
 
-  training.items.map(trainingPiece => {
-    const locationId = trainingPiece?.data?.location?.iv?.[0]
-    if (locations.indexOf(locationId) === -1) {
-      locations.push(locationId)
-    }
+  trainingData?.map(trainingPiece => {
+    // const locationId = trainingPiece?.data?.location?.iv?.[0]
+    // if (locations.indexOf(locationId) === -1) {
+    //   locations.push(locationId)
+    // }
 
     const typeId = trainingPiece?.data?.type?.iv?.[0]
     if (types.indexOf(typeId) === -1) {
@@ -77,10 +76,10 @@ export const load: PageServerLoad = async ({ platform }) => {
   return {
     faqData,
     locationData,
-    notices,
+    noticeData,
     price,
-    social: await cachedClient.getContents('social', { $orderby: 'data/order/iv' }),
-    training,
+    socialData: await cachedClient.getContents('social', { $orderby: 'data/order/iv' }),
+    trainingData,
     typeData,
   }
 }
