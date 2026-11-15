@@ -15,11 +15,11 @@
   let { data }: PageProps = $props();
 
   const faqData = data?.faqData,
-    layout = data?.layout?.items?.[0]?.data?.content?.en,
-    noticeData = data?.notices,
-    seo = data?.layout?.items?.[0]?.data?.seo?.en,
+    layout = data?.layout?.[0]?.data?.content?.en,
+    noticeData = data?.noticeData,
+    seo = data?.layout?.[0]?.data?.seo?.en,
     locationData = data?.locationData,
-    training = data?.training,
+    trainingData = data?.trainingData,
     typeData = data?.typeData
 </script>
 
@@ -28,5 +28,5 @@
   {layout}
   {locationData}
   {noticeData}
-  {training}
+  {trainingData}
   {typeData} />

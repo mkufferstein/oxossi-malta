@@ -8,7 +8,7 @@
 
   let activeLocations = $derived(settings?.locations.map(
     (location: string) =>
-      locationData?.items.find(currentLocation => currentLocation.id === location )
+      locationData?.find(currentLocation => currentLocation.id === location )
     )
   )
 </script>

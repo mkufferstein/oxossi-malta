@@ -13,8 +13,8 @@
 
   let { data }: PageProps = $props()
 
-  const layout = data?.layout?.items?.[0]?.data?.content?.en,
-    seo = data?.layout?.items?.[0]?.data?.seo?.en,
+  const layout = data?.layout?.[0]?.data?.content?.en,
+    seo = data?.layout?.[0]?.data?.seo?.en,
     locationData = data?.locationData
 </script>
 

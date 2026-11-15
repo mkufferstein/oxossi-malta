@@ -36,8 +36,25 @@ export function getCachedClient(platform?: any) {
       return result
     }
     result = await squidex.contents.getContents(schema, requestParameters)
-    set(cacheKey, result)
-    return result
+
+    const filteredItems = result?.items?.map(contentItem => {
+      const {
+        id,
+        data,
+        schemaName,
+        version
+      } = contentItem
+
+      return {
+        id,
+        data,
+        schemaName,
+        version
+      }
+    })
+  
+    set(cacheKey, filteredItems)
+    return filteredItems
   }
 
   async function getAssets(requestParameters?: any) {

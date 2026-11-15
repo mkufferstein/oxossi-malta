@@ -21,7 +21,7 @@ export function faqPageSchema(faqData, layout) {
 
   faqLists?.map(faqList => faqList?.faqs?.map(faqId => faqIds.push(faqId)))
 
-  const faqs = faqData?.items?.filter(faqItem => faqIds.indexOf(faqItem.id) > -1)
+  const faqs = faqData?.filter(faqItem => faqIds.indexOf(faqItem.id) > -1)
 
   if (faqs.length === 0) {
     return

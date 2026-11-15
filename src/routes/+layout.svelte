@@ -14,13 +14,13 @@
   let { children, data } = $props();
 
   const {
-    notices,
-    social
+    noticeData,
+    socialData
   } = data
 
   let isMenuOpen: boolean = $state(false),
     currentNoticeIndex: number = $state(0),
-    interval: Timeout = $state(0),
+    interval: number = $state(0),
     startX: number = 0,
     endX: number = 0
 
@@ -29,7 +29,7 @@
     classList.push((isMenuOpen) ? 'iconoir-xmark' : 'iconoir-menu')
     return classList
   }),
-    headerNotices = $derived(notices?.items?.filter((notice: any) => notice?.data?.isVisibleInHeader?.iv))
+    headerNotices = $derived(noticeData?.filter((notice: any) => notice?.data?.isVisibleInHeader?.iv))
 
   const toggleMenu = () => {
     isMenuOpen = !isMenuOpen
@@ -107,7 +107,7 @@
   $effect(() => {
     if (!headerNotices || headerNotices.length <= 1) return;
     
-    interval = setInterval(() => {
+    interval = window.setInterval(() => {
       currentNoticeIndex = (currentNoticeIndex + 1) % headerNotices.length;
     }, 5000);
     
@@ -120,7 +120,7 @@
     }
   })
 
-  $inspect('HN', headerNotices)
+  // $inspect('HN', headerNotices)
 </script>
 
 <svelte:head>
@@ -186,7 +186,7 @@
 <footer class="footer">
   <div class="container">
     <div class="social-links">
-      {#each social?.items as socialLink}
+      {#each socialData as socialLink}
         <a href={socialLink?.data?.cta?.iv?.link} target="_blank">
           <img src={env.PUBLIC_SQUIDEX_ENVIRONMENT + env.PUBLIC_SQUIDEX_ASSETS + socialLink?.data?.icon?.iv?.[0]} alt={socialLink?.data?.cta?.iv?.text}/>
           {socialLink?.data?.cta?.iv?.text}
