@@ -31,5 +31,21 @@
     "PUBLIC_HOST": "capoeiramalta.com",
     "SQUIDEX_APP_NAME": "capoeira-malta",
     "SQUIDEX_CLIENT_ID": "capoeira-malta:read-only"
+  },
+  "previews": {
+    "vars": {
+      "CONTENT_CACHE_TTL": "86400000",
+      "PUBLIC_SQUIDEX_ASSETS": "/api/assets/capoeira-malta/",
+      "PUBLIC_SQUIDEX_ENVIRONMENT": "https://cloud.squidex.io",
+      "PUBLIC_HOST": "capoeiramalta.com",
+      "SQUIDEX_APP_NAME": "capoeira-malta",
+      "SQUIDEX_CLIENT_ID": "capoeira-malta:read-only"
+    },
+    "kv_namespaces": [
+      {
+        "binding": "KV",
+        "id": "1b75eed6f29b4c95a6b6f73f1b519e7a"
+      }
+    ]
   }
 }
