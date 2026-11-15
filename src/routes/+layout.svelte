@@ -193,6 +193,16 @@
         </a>
       {/each}
     </div>
+    <div class="footer-links">
+      <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/capoeira-classes-malta">Classes</a></li>
+          <li><a href="/axe-da-ilha-2026">1˚ Axe da Ilha Festival</a></li>
+          <li><a href="/workshop">Workshops</a></li>
+          <li><a href="/about-axe-da-ilha-malta">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
     <p>&copy; 2025 Axe da Ilha - Capoeira Malta. All rights reserved.</p>
   </div>
 </footer>
