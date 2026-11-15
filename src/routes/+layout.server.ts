@@ -53,6 +53,8 @@ export const load: PageServerLoad = async ({ platform }) => {
     typeData,
     types: string[] = []
 
+console.log(trainingData)
+
   trainingData?.map(trainingPiece => {
     // const locationId = trainingPiece?.data?.location?.iv?.[0]
     // if (locations.indexOf(locationId) === -1) {
